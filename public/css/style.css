@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Sora:wght@100;300;400;500;800&display=swap');
+
+:root {
+    --display : 'Sniglet', cursive;
+    --genfont: 'Sora', sans-serif;
+    --bg-main1 : #833ab4;
+    --bg-main2 : #fcb045;
+    --blackdarker: #2C2C26;
+    --blackol : #3F3F37;
+    --green : #43AA8B;
+    --red: #DB504A;
+    --cream: #F4FFF8;
+    --grey-blue: #8BAAAD;
+    --gray-purp: #9E90A2;
+    --blue-eyes: #98B9F2;
+
+}
+
+body {
+    color: linear-gradient(to left top, var(--bg-main1), var(--bg-main2)) fixed !important;
+
+    /*edit*/
+    background: white;
+}
+
+*{
+    font-family: var(--genfont)!important;
+    letter-spacing: -1.2px!important;
+}
+
+a {
+    text-decoration: none!important;
+    color: white!important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: white;
+    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+}
+
+.display-1 {
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
+    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
