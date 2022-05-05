@@ -27,13 +27,30 @@
     color: white!important;
 }
 
+body {
+    color: linear-gradient(to left top, var(--bg-main1), var(--bg-main2)) fixed !important;
+
+    /*edit*/
+    background: white;
+}
+
+*{
+    font-family: var(--genfont)!important;
+    letter-spacing: -1.2px!important;
+}
+
+a {
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
+    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*    BG AND TEXT COLORS    */
 
 .bg-cherry{
     background-color: var(--cherry)!important;
-}
-
-.text-cherry{
-    color: var(--cherry)!important;
 }
 
 .bg-cherry-white{
@@ -56,28 +73,20 @@
 
 .h1,.h2,.h3,.h4,.h5,.h6{
     color: var(--bg-main1)!important;
-    font-family: var(--genhead)!important;
-}
-
-body {
-    color: linear-gradient(to left top, var(--bg-main1), var(--bg-main2)) fixed !important;
-
-    /*edit*/
-    background: white;
-}
-
-*{
     font-family: var(--genfont)!important;
-    letter-spacing: -1.2px!important;
 }
 
-a {
-    font-family: var(--display)!important;
-    font-weight: bolder!important;
-    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.text-cherry{
+    color: var(--cherry)!important;
 }
+
+.text-black{
+    color: black!important;
+}
+
+
+/*   TYPOS    */
 
 .display-1 {
     font-family: var(--display)!important;
