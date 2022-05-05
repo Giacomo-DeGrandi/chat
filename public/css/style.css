@@ -1,19 +1,62 @@
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&family=Sora:wght@100;300;400;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,300;0,500;1,100&display=swap');
+
 
 :root {
     --display : 'Sniglet', cursive;
-    --genfont: 'Sora', sans-serif;
+    --genhead: 'Sora', sans-serif;
+    --genfont: 'Noto Sans', sans-serif;
     --bg-main1 : #833ab4;
     --bg-main2 : #fcb045;
     --blackdarker: #2C2C26;
     --blackol : #3F3F37;
     --green : #43AA8B;
     --red: #DB504A;
+    --cherry: #DA4167;
+    --rose: #CD8270;
     --cream: #F4FFF8;
     --grey-blue: #8BAAAD;
     --gray-purp: #9E90A2;
     --blue-eyes: #98B9F2;
+    --darkpurp : #2D143E;
+    --vdarkpurp :#160A1F;
+}
 
+.bg-light-d{
+    background: black linear-gradient(var(--cherry), var(--bg-main1)) fixed !important;
+    color: white!important;
+}
+
+
+.bg-cherry{
+    background-color: var(--cherry)!important;
+}
+
+.text-cherry{
+    color: var(--cherry)!important;
+}
+
+.bg-cherry-white{
+
+    background: black linear-gradient(var(--cherry), white) fixed !important;
+
+}
+
+.bg-vd-purp{
+    background-color: var(--vdarkpurp)!important;
+}
+
+.grey-bg {
+    background-color: var(--gray-purp)!important;
+}
+
+.grey-ft {
+    color: var(--grey-blue)!important;
+}
+
+.h1,.h2,.h3,.h4,.h5,.h6{
+    color: var(--bg-main1)!important;
+    font-family: var(--genhead)!important;
 }
 
 body {
@@ -29,11 +72,11 @@ body {
 }
 
 a {
-    text-decoration: none!important;
-    color: white!important;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: white;
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
     background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .display-1 {
@@ -42,4 +85,18 @@ a {
     background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.display-7 {
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
+    font-size:1.2em!important;
+    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn-outline-cherry {
+    color:var(--cherry)!important;
+    border: solid 0.5px var(--cherry)!important;
 }
