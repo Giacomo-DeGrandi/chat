@@ -54,9 +54,11 @@ a {
 }
 
 .bg-cherry-white{
-
     background: black linear-gradient(var(--cherry), white) fixed !important;
+}
 
+.bg-gold-white{
+    background: black linear-gradient(var(--bg-main2), white) fixed !important;
 }
 
 .bg-vd-purp{
@@ -79,6 +81,11 @@ a {
 
 .text-cherry{
     color: var(--cherry)!important;
+}
+
+.btn-cherry{
+    background-color: var(--cherry)!important;
+    color: var(--cream)!important;
 }
 
 .text-black{
@@ -104,8 +111,32 @@ a {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+.display-6 {
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
+    font-size:1.5em!important;
+    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
 .btn-outline-cherry {
     color:var(--cherry)!important;
     border: solid 0.5px var(--cherry)!important;
+}
+
+.text-fat {
+    font-family: var(--display)!important;
+    font-weight: bolder!important;
+}
+
+/*------------------   VALID OR NOT   _________________*/
+
+.is_valid {
+    text-align: center!important;
+    color:royalblue;
+}
+.not_valid {
+    text-align: center!important;
+    color:crimson;
 }

@@ -43,7 +43,7 @@ ob_start();
             <div class="col">
 
                 <div class="h1 fw-bold">
-                    <b>Chatting made easy</b>
+                    <b>The easyiest chat of the</b><p class="display-7">web</p>
                 </div>
                 <p class="lead">
                     Chat with users of our communities<br><br>

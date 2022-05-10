@@ -5,7 +5,6 @@ $title = 'Log In';
 $footer = '';
 
 
-
 ob_start();
 ?>
     <div class="container-fluid">
@@ -22,17 +21,17 @@ ob_start();
                 <form action="" method="POST">
 
                     <div class="row py-2 p-2">
-                        <label for="email" class="py-1 text-cherry"><b>EMAIL</b></label><br>
+                        <label for="email" class="py-1 text-cherry">EMAIL</label><br>
                         <input type="text" class="p-1 border border-0 bg-light-d rounded-pill" id="inputEmail" placeholder="Email" name="email">
                     </div>
 
                     <div class="row py-2 p-2">
-                        <label for="password" class="py-1 text-cherry"><b>PASSWORD</b></label><br>
+                        <label for="password" class="py-1 text-cherry">PASSWORD</label><br>
                         <input type="password" class="p-1 border border-0 bg-light-d rounded-pill" id="inputPassword" placeholder="Password" name="password">
                     </div>
 
-                    <div class="row py-2 p-2">
-                        <button type="submit" class="btn btn-outline-cherry rounded-pill p-2" name="submit_connection">connect</button>
+                    <div class="row py-4 p-3">
+                        <button type="submit" class="btn btn-outline-cherry text-fat rounded-pill p-2 w-100 shadow" name="connect">connect</button>
                     </div>
 
                     <div class="py-2">
