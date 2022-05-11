@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     // SELECT my INS
 
+    // ins sing up
     let user = document.querySelector('#username');   //.textContent
     let email = document.querySelector('#email');
     let password = document.querySelector('#password');
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded',function(){
     let termsBox = document.querySelector('#termsBox');
     let submitSub = document.querySelector('#submitSub');
     let form = document.querySelector('#formSub');
+
 
     //_________________________________VALIDATION   FUNCTIONS  _______________________________________///
 
@@ -64,13 +66,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
             formData.append('emailExists', emailVal);
 
-            fetch("../../php/ends/email_exists.php", {
+            fetch("../../php/controller/user_controller.php", {
                 method: 'POST',
                 body: formData,
             })
                 .then(response => response.json())
                 .then(data =>{
-                    console.log(data)
                     if (data === 'exists') {
                         showErrors(email, 'This email already exists, please choose another one')
                         return false;
@@ -83,6 +84,8 @@ document.addEventListener('DOMContentLoaded',function(){
         }
         return isValid
     }
+
+
 
     //_______________ VALIDATION FOR PASSWORD ____________//
 
@@ -135,7 +138,19 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
     const testValidTerms = () => {
-        // initialise my valid condition to false to test the errors
+        // initialise my valide condition to false to test the errors
+        let isValid = false
+        // take away spaces
+        let check = termsBox.checked
+
+        // test if required function is valid else give an error
+        if (!check) {
+            showErrors(termsBox, 'You have to agree to our terms to subscribe. ')
+        } else {
+            showValids(termsBox)
+            isValid = true;
+        }
+        return isValid
 
     }
 
@@ -148,7 +163,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
         // test if required function is valid else give an error
         if (!isRequired(dateVal)) {
-            showErrors(date, 'Email can\'t be blank')
+            showErrors(date, 'Date of birth can\'t be blank')
             // test if the length is at least 8ch and the max is 35ch
         } else if (!validateDate(dateVal)) {
             showErrors(date, 'You need to be at least 18 to subscribe!')
@@ -191,48 +206,64 @@ document.addEventListener('DOMContentLoaded',function(){
     const validatePassword = (password) => {
         const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
         return re.test(password);
-    };
+    }
 
-    // validate Terms
-    const validateTerms = (value) => {
-        console.log(value)
-    };
 
     // date
     const validateDate = (value) => {
 
         let dateVal = value
-        dateVal.split('/')
+        dateVal = dateVal.split('-')
         let y = dateVal[0]
         let m = dateVal[1]
         let d = dateVal[2]
-
-        console.log(value);
+        y = parseInt(y)
+        m = parseInt(m)
+        d = parseInt(d)
 
         let testDate = new Date();
 
         let testY = testDate.getFullYear();
         let testM = testDate.getMonth();
+        testM = testM + 1
         let testD = testDate.getDate();
 
-        if((testY-18) )
-
-        console.log(testY-18,testM,testD)
+        let check;
 
 
+        if((testY-18) > y){
+            check = 'valid'
+        } else if((testY-18) === y){
+            if(testM > m){
+                check = 'valid'
+            } else if(testM === m){
+                if(testD > d){
+                    check ='valid'
+                } else if (testD === d) {
+                    check = 'valid'
+                } else {
+                    check = 'invalid'
+                }
+            } else {
+                check = 'invalid'
+            }
+        } else {
+            check = 'invalid'
+        }
+        if(check === 'valid'){
+            return true
+        } else {
+            return false
+        }
 
     }
-
-
-
-
 
 
     ///___________________________________________________________________________________________________///
 
     // ____________ ADD EVENT LISTENER TO ALL THE INPUTS FROM FORM ____________________________________//
 
-    // Listen to the inputs for callback
+    // Listen to the inputs for callback in both the forms !!!!!!!!!!!!!!
 
     form.addEventListener('input', function (e) {
 
@@ -243,15 +274,9 @@ document.addEventListener('DOMContentLoaded',function(){
             case 'email':
                 testValidEmail();
                 break;
-
-                /*
-
             case 'termsBox':
                 testValidTerms();
                 break;
-
-
-                 */
             case 'date':
                 testValidDate();
                 break;
@@ -261,6 +286,7 @@ document.addEventListener('DOMContentLoaded',function(){
             case 'passwordConf':
                 testPasswordConfirmation();
                 break;
+
         }
 
     })
@@ -288,6 +314,42 @@ document.addEventListener('DOMContentLoaded',function(){
         error.textContent = value;
     }
 
+    submitSub.addEventListener('click', function (event) {
+
+        event.preventDefault()
+        // validate forms
+        let nameV = testValidName(),
+            emailV = testValidEmail(),
+            passwordV = testValidPassword(),
+            confPasswordV = testPasswordConfirmation(),
+            dateV = testValidDate(),
+            termsV = testValidTerms();
+
+        let isFormValid = nameV && termsV && emailV && passwordV && confPasswordV && dateV
+
+        // submit to the server if the form is valid
+        if (isFormValid) {
+
+            let submitData = new FormData();
+
+            submitData.append('submitSub', 'true');
+            submitData.append('email', email.value);
+            submitData.append('username', user.value);
+            submitData.append('password', password.value);
+            submitData.append('passwordConf', passwordConf.value);
+            submitData.append('date', date.value);
+
+            fetch("../../php/controller/user_controller.php", {
+                method: 'POST',
+                body: submitData
+            }).then(r => r.json())
+                .then(d => {
+                    if (d === 'setted') {
+                        window.location = "../../php/view/connexion.php";
+                    }
+                })
+        }
+    })
 
 
 })

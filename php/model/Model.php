@@ -5,7 +5,7 @@ abstract class Model {
 
     private $conn;
 
-    function getConn(){
+    function connect(){
 
         $server="localhost";
         $username="root";
@@ -17,17 +17,14 @@ abstract class Model {
         return $this->conn;
     }
 
-    public function selectQuery($sql,$params = null){
-
-        if($params === null){
-            $result = $this->getConn()->query($sql);
+    function selectQuery($sql, $p = null){
+        if ($p === null) {
+            $r = $this->connect()->query($sql);
         } else {
-            $result = $this->getConn()->prepare($sql);
-            $result->execute($params);
-
+            $r = $this->connect()->prepare($sql);
+            $r -> execute($p);
         }
-        return $result;
+        return $r;
     }
-
 
 }

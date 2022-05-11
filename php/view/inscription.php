@@ -5,22 +5,31 @@ $title = 'Sign Up';
 $footer = '';
 
 
+require_once('../model/Model.php');
+require_once('../model/User.php');
+
+ob_start();
+?>
+    <script type="text/javascript" src="../../public/js/inscription.js"></script>
+<?php
+$script = ob_get_clean();
+
+
 
 ob_start();
 ?>
     <div class="container-fluid">
 
         <div class="d-flex align-items-center justify-content-center p-5 bg-gold-white">
-            <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap w-50">
+            <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap">
 
                 <div class="d-flex align-items-center justify-content-center p-4">
-                        <div class="display-1 p-2">
+                        <div class="display-1 p-2 text-nowrap">
                             Sign Up
                         </div>
                 </div>
 
-                <form action="inscription.php" method="POST" id="formSub" >
-
+                <form action="connexion.php" method="POST" id="formSub">
 
                     <div class="py-1 text-start">
                         <label for="username" class="py-1 text-cherry">USERNAME</label><br>
@@ -47,24 +56,24 @@ ob_start();
                     </div>
 
                     <div class="py-1 row text-start">
-                        <div class="col d-flex flex-column">
+                        <div class="col d-flex flex-column text-start">
                             <label for="date" class="py-1 text-cherry">DATE OF BIRTH</label><br>
                             <input type="date" class="p-2 border border-0 rounded-pill bg-light-d w-75" name="date" id="date">
                             <small></small>
                         </div>
-                        <div class="col d-flex flex-column text-start">
+                        <div class="col d-flex flex-column text-start text-nowrap">
                             <label for="terms" class="py-1 text-cherry">TERMS</label><br>
                             <div class="row w-75">
                                 <p class="small h6">I've read and I accept<br><a href="../../divers/TERMS.txt" class=" p-2">all the Terms</a>
                                     <input type="checkbox" class="p-2 border border-0 bg-cherry-white" name="terms" id="termsBox">
+                                    <br><small class="text-danger"></small>
                                 </p>
                             </div>
-                            <small></small>
                         </div>
                     </div>
 
                     <div class="py-4 p-4">
-                        <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" name="submitSub" id="submitSub">
+                        <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" id="submitSub">
                             <i class="text-fat">subscribe</i>
                         </button>
                     </div>
