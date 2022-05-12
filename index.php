@@ -3,6 +3,8 @@
 $header = '';
 $footer = '';
 
+session_start();
+
 
 ob_start();
 ?>

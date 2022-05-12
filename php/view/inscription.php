@@ -4,6 +4,8 @@ $title = 'Sign Up';
 
 $footer = '';
 
+session_start();
+
 
 require_once('../model/Model.php');
 require_once('../model/User.php');

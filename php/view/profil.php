@@ -1,8 +1,10 @@
 <?php
 
-$title = 'Sign Up';
+$title = 'Account';
 
 $footer = '';
+
+session_start();
 
 
 require_once('../model/Model.php');
@@ -29,7 +31,6 @@ ob_start();
         </div>
 
     </div>
-
 <?php
 
 $main = ob_get_clean();

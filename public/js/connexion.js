@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', function(){
                 .then(d => {
                     if ( d === 'logged'){
                         window.location = "../../php/view/profil.php";
+                    } else {
+                        console.log(d)
                     }
                 })
         } else {

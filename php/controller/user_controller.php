@@ -1,9 +1,7 @@
 <?php
 
-session_start([
-    'cookie_httponly' => true,
-    'cookie_secure' => true
-]);
+
+session_start();
 
 require_once('../model/User.php');
 
@@ -101,8 +99,9 @@ if($_POST){
 
                 $rights = 1;
                 $data1 = 'example';
+                $connected = 0;
 
-                $user->subscribeUser( $username, $email, $pw, $rights, $dob, $data1);
+                $user->subscribeUser( $username, $email, $pw, $rights, $dob, $data1, $connected);
 
                 $userInfos = $user->getUserInfosByEmail($email);
 
@@ -138,7 +137,12 @@ if($_POST){
 
 
                 if (empty($errors)) {
-                    setcookie("connected", $checkExists[0]['id'], time()+3600);  /* expire in 1 hour */
+
+                    $user->userConnected($email);
+                    $_SESSION['id'] = $checkExists[0]['id'];
+                    $_SESSION["rights"] =  $checkExists[0]['rights'];
+                    $_SESSION["connected"] = $checkExists[0]['connected'];
+
                     print_r(json_encode('logged'));
                 }
 

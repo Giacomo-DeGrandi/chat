@@ -4,6 +4,9 @@ $title = 'Log In';
 
 $footer = '';
 
+session_start();
+
+
 ob_start();
 ?>
     <script type="text/javascript" src="../../public/js/connexion.js"></script>
@@ -29,13 +32,13 @@ ob_start();
 
                     <div class="row py-2 p-2">
                         <label for="email" class="py-1 text-cherry">EMAIL</label><br>
-                        <input type="text" class="p-1 border border-0 bg-light-d rounded-pill" id="inputEmail" placeholder="Email" name="inputEmail">
+                        <input type="text" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill" id="inputEmail" placeholder="Email" name="inputEmail">
                         <small class=""></small>
                     </div>
 
                     <div class="row py-2 p-2">
                         <label for="password" class="py-1 text-cherry">PASSWORD</label><br>
-                        <input type="password" class="p-1 border border-0 bg-light-d rounded-pill" id="inputPassword" placeholder="Password" name="inputPassword">
+                        <input type="password" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill" id="inputPassword" placeholder="Password" name="inputPassword">
                         <small></small>
                     </div>
 
