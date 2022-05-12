@@ -1,10 +1,11 @@
 <?php
 
+session_start();
+
+
 $title = 'Sign Up';
 
 $footer = '';
-
-session_start();
 
 
 require_once('../model/Model.php');

@@ -1,5 +1,8 @@
 <?php
 
+
+require_once('../controller/header_controller.php');
+
 ob_start();
 ?>
     <div class="container-fluid p-2">
@@ -9,9 +12,12 @@ ob_start();
             <?php   if(isset($_SESSION['connected']) && isset($_SESSION['rights'])){  ?>
                 <?php   if($_SESSION['connected'] === '1'){  ?>
 
-                    <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3" name="logout">Log out</button>
+                    <form method="post" class="col-lg-2 ms-3">
+                        <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 " name="logout">Log out</button>
+                    </form>
 
                     <a href="../../php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Account</a>
+                    <a href="../../php/view/hall.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Hall</a>
 
                     <?php   if($_SESSION['rights'] === '42'){ ?>
 
@@ -20,6 +26,7 @@ ob_start();
                     <?php  }  ?>
 
                 <?php   }  ?>
+
             <?php   } else {  ?>
 
                 <div class="display-5 col-lg-1"></div>

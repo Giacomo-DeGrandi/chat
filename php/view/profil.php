@@ -1,10 +1,10 @@
 <?php
 
+session_start();
+
 $title = 'Account';
 
 $footer = '';
-
-session_start();
 
 
 require_once('../model/Model.php');

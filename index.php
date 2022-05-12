@@ -1,9 +1,16 @@
 <?php
 
+session_start();
+
 $header = '';
 $footer = '';
 
-session_start();
+if($_SESSION){
+    print_r($_SESSION);
+}
+
+
+require_once('php/controller/index_controller.php');
 
 
 ob_start();
@@ -67,6 +74,27 @@ ob_start();
         </div>
 
         <div class="d-flex align-items-center justify-content-center">
+
+        <?php   if(isset($_SESSION['connected']) && isset($_SESSION['rights'])){   ?>
+            <?php   if($_SESSION['connected'] === '1'){  ?>
+
+                <form method="post" class="col-lg-2 ms-3">
+                    <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 " name="logout">Log out</button>
+                </form>
+
+                <a href="php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Account</a>
+                <a href="php/view/chat.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Chat</a>
+
+                <?php   if($_SESSION['rights'] === '42'){ ?>
+
+                    <a href="php/view/admin.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Admin</a>
+
+                <?php  }  ?>
+
+            <?php   }  ?>
+
+        <?php   } else {  ?>
+
             <div class="text-center p-3">
                 <p>Log In to start messaging</p><br>
                 <a class="shadow p-2 rounded-pill bg-light link-dark" href="php/view/connexion.php">log in</a>
@@ -76,6 +104,9 @@ ob_start();
                 <p>You haven't subscribe yet?</p><br>
                 <a class="big shadow p-2 rounded-pill bg-light link-dark" href="php/view/inscription.php">subscribe</a>
             </div>
+
+        <?php   }  ?>
+
         </div>
 
 
@@ -84,6 +115,17 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
+
+require_once('php/model/Model.php');
+require_once('php/model/User.php');
+
+
+if(isset($_POST['logout'])){
+    $user = new User();
+    $user->userDisconnect($_SESSION['id']);
+    session_destroy();
+    header('location: index.php');
+}
 
 
 

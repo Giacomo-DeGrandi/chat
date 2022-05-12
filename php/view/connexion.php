@@ -1,10 +1,11 @@
 <?php
 
+session_start();
+
+
 $title = 'Log In';
 
 $footer = '';
-
-session_start();
 
 
 ob_start();
@@ -45,6 +46,11 @@ ob_start();
                     <div class="row py-4 p-3">
                         <button type="submit" class="btn btn-outline-cherry text-fat rounded-pill p-2 w-100 shadow" id="connect" name="connect">connect</button>
                     </div>
+                    <?php if(isset($errors)){   ?>
+
+                        <small> <?= $errors ?> </small>
+
+                    <?php } ?>
 
                     <div class="py-2">
                         <p>You don't have an account yet? &#160; <a href="inscription.php" class="p-3 display-7">Sign Up</a></p>

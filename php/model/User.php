@@ -45,6 +45,16 @@ class User extends Model{
         return $result->fetchAll();
     }
 
+    public function userDisconnect($id)
+    {
+        $sql = "UPDATE `users` SET `connected`= 0 WHERE id = :id";
+        $params = [':id' => $id ];
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
+
+
 
 
 }
