@@ -29,3 +29,8 @@ $channels = new Channels();
 // ALTER TABLE utilisateurs ADD CONSTRAINT email UNIQUE (email);
 
 $channelList = $channels->getAllChannels();
+
+if(isset($_POST['chan'])){
+    $_SESSION['chan'] = $_POST['chan'];
+    header('location: ../view/chat.php');
+}

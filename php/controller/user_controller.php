@@ -141,7 +141,7 @@ if($_POST){
                     $user->userConnected($email);
                     $_SESSION['id'] = $checkExists[0]['id'];
                     $_SESSION["rights"] =  $checkExists[0]['rights'];
-                    $_SESSION["connected"] = $checkExists[0]['connected'];
+                    $_SESSION["connected"] = '1';
 
                     print_r(json_encode('logged'));
                 }

@@ -2,14 +2,14 @@
 
 session_start();
 
-
 $title = 'Sign Up';
 
 $footer = '';
 
-
 require_once('../model/Model.php');
 require_once('../model/User.php');
+require_once('../controller/header_controller.php');
+
 
 ob_start();
 ?>
@@ -95,6 +95,8 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
+
+require_once('../controller/header_controller.php');
 
 require_once('header.php');
 

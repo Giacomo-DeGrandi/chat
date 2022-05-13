@@ -2,15 +2,17 @@
 
 session_start();
 
-$header = '';
 $footer = '';
+$header = '';
 
-if($_SESSION){
-    print_r($_SESSION);
-}
-
-
+require_once('php/model/Model.php');
+require_once('php/model/User.php');
 require_once('php/controller/index_controller.php');
+
+
+
+//session_destroy();
+
 
 
 ob_start();
@@ -115,20 +117,6 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
-
-require_once('php/model/Model.php');
-require_once('php/model/User.php');
-
-
-if(isset($_POST['logout'])){
-    $user = new User();
-    $user->userDisconnect($_SESSION['id']);
-    session_destroy();
-    header('location: index.php');
-}
-
-
-
 
 
 require_once('php/view/main.php');

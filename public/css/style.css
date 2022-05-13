@@ -34,6 +34,10 @@ body {
     background: white;
 }
 
+html {
+    scroll-behavior:smooth!important;
+}
+
 *{
     font-family: var(--genfont)!important;
     letter-spacing: -1.2px!important;
@@ -51,6 +55,30 @@ a {
 
 .bg-cherry{
     background-color: var(--cherry)!important;
+}
+.bg-white{
+    background-color: white!important;
+}
+
+.inline{
+    display:inline!important;
+}
+.bg-grey-bl{
+    background-color: var(--grey-blue)!important;
+}
+.bg-grey-pr{
+    background-color: var(--gray-purp)!important;
+}
+
+.bg-main1{
+    background-color: var(--darkpurp)!important;
+}
+.bg-vdarkpurp{
+    background-color: var(--vdarkpurp)!important;
+}
+
+.bg-vdarkpurp{
+    background-color: var(--vdarkpurp)!important;
 }
 
 .bg-cherry-white{
@@ -95,7 +123,7 @@ a {
 
 /*   TYPOS    */
 
-.display-1 {
+.display-1,.display-3 {
     font-family: var(--display)!important;
     font-weight: bolder!important;
     background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
@@ -139,4 +167,12 @@ a {
 .not_valid {
     text-align: center!important;
     color:crimson;
+}
+
+
+textarea:focus {
+    outline: none !important;
+    border: 1px solid var(--bg-main1) !important;
+    box-shadow: 0 0 2px var(--bg-main1);
+    resize: none!important;
 }

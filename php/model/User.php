@@ -39,7 +39,7 @@ class User extends Model{
 
     public function userConnected($email)
     {
-        $sql = "UPDATE `users` SET `connected`= 1 WHERE email = :email";
+        $sql = "UPDATE `users` SET `connected`= '1' WHERE email = :email";
         $params = [':email' => $email ];
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();
@@ -47,7 +47,7 @@ class User extends Model{
 
     public function userDisconnect($id)
     {
-        $sql = "UPDATE `users` SET `connected`= 0 WHERE id = :id";
+        $sql = "UPDATE `users` SET `connected`= '0' WHERE id = :id";
         $params = [':id' => $id ];
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();

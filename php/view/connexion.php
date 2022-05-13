@@ -7,6 +7,9 @@ $title = 'Log In';
 
 $footer = '';
 
+require_once('../controller/header_controller.php');
+
+
 
 ob_start();
 ?>

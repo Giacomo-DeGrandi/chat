@@ -2,21 +2,26 @@
 
 session_start();
 
+
 $title = 'Account';
 
 $footer = '';
 
+if(!$_SESSION['connected']){
+    header('location:../../index.php');
+}
+
+
 
 require_once('../model/Model.php');
 require_once('../model/User.php');
+
 
 ob_start();
 ?>
     <script type="text/javascript" src="../../public/js/profil.js"></script>
 <?php
 $script = ob_get_clean();
-
-
 
 ob_start();
 ?>
@@ -34,6 +39,8 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
+
+require_once('../controller/header_controller.php');
 
 require_once('header.php');
 
