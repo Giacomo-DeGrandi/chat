@@ -17,7 +17,6 @@ if(isset($_COOKIE)){
 
         $messagesPrinted = $messages->getAllMessagesByChannel($_COOKIE['chan']);
         $channelName = $channels->getChannelById($_COOKIE['chan']);
-        var_dump($messagesPrinted);
         $chatname = $channelName[0]['name'];
         $chatDescription = $channelName[0]['description'];
 

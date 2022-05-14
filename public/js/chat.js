@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     // Validation showing function if is valid remove the invalid class and add is_valid
     const showValids = (input) => {
+
         const myDiv = input.parentElement
         myDiv.classList.remove('not_valid')
         myDiv.classList.add('is_valid')
@@ -113,6 +114,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     // Error showing function if is invalid remove the valid class and add not_valid
     const showErrors = (input, value) => {
+
         const myDiv = input.parentElement
         myDiv.classList.remove('is_valid')
         myDiv.classList.add('not_valid')
@@ -138,20 +140,43 @@ document.addEventListener('DOMContentLoaded',function(){
         })
             .then(r => r.json())
             .then(d =>{
-                console.log(d)
+
+                messDiv.innerHTML = '';
+
+                for(let u=0;u<=d.length;u++){
+
+
+                    let vu = Object.values(d[u])
+                    console.log(vu)
+                    let div = document.createElement('div')
+                    div.setAttribute('class','bg-light shadow-sm mb-1 p-1')
+                    let h3Name = document.createElement('h3')
+                    h3Name.setAttribute('class','text-fat')
+                    h3Name.innerText = vu[5]
+                    let pContent = document.createElement('p')
+                    pContent.innerText = vu[3]
+                    let pDate = document.createElement('p')
+                    pDate.setAttribute('class','text-muted')
+                    pDate.innerText = vu[2]
+
+                    messDiv.appendChild(div)
+                    div.appendChild(h3Name)
+                    div.appendChild(pContent)
+                    div.appendChild(pDate)
+                    messDiv.appendChild(div);
+
+                }
             })
     }
-
-
 
     // btn_____________________
 
     sendBtn.addEventListener('click', function(){
+
             if(testValidText()){
 
                 let plaintext = messCon.value
                 let sentBy = sendBtn.value.split(',')
-
 
                 let textData = new FormData();
 
@@ -164,7 +189,9 @@ document.addEventListener('DOMContentLoaded',function(){
                     body: textData,
                 })
                     .then(r => r.json())
+
                     .then(d =>{
+
                             let div = document.createElement('div')
                             div.setAttribute('class','bg-light shadow-sm mb-1 p-1')
                             let h3Name = document.createElement('h3')
@@ -175,11 +202,13 @@ document.addEventListener('DOMContentLoaded',function(){
                             let pDate = document.createElement('p')
                             pDate.setAttribute('class','text-muted')
                             pDate.innerText = d[1]
+
                             messDiv.appendChild(div)
                             div.appendChild(h3Name)
                             div.appendChild(pContent)
                             div.appendChild(pDate)
                             messDiv.appendChild(div);
+
                             showValids(messCon);
 
                         })
