@@ -117,8 +117,9 @@ document.addEventListener('DOMContentLoaded', function(){
             }).then(r => r.json())
                 .then(d => {
                     console.log(d)
-                    if(d==='1'){
-                        setCookie('connected', d , '1');
+                    if(d){
+                        setCookie('connected', 1 , '1');
+                        setCookie('id', d , '1');
                         window.location = "../../php/view/profil.php";
                     }
                 })

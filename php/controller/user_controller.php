@@ -148,7 +148,7 @@ if($_POST){
                     $_SESSION['id']=$checkExists[0]['id'];
                     $_SESSION['rights']= $checkExists[0]['rights'];
 
-                    print_r(json_encode('1'));
+                    print_r(json_encode($_SESSION['id']));
 
                 }
 

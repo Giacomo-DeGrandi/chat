@@ -30,7 +30,7 @@ ob_start();
 ?>
     <div class="container-fluid">
 
-        <div class="d-flex align-items-start justify-content-center p-1 bg-white flex-column w-75 h-100 overflow-hidden">
+        <div class="d-flex align-items-start justify-content-center p-1 bg-white flex-column w-75 overflow-hidden">
             <div class="h2 w-75">
                 <p id="chatName"><?= $chatname ?></p>
             </div>
@@ -44,7 +44,7 @@ ob_start();
                 <p><?= $chatDescription?></p>
             </div>
 
-            <div class="d-flex flex-column rounded-0 overflow-auto p-5 shadow-sm w-100" id="messages">
+            <div class="d-flex flex-column rounded-0 overflow-auto p-5 shadow-sm h-75 w-100" id="messages">
 
                 <?php if(!empty($messagesPrinted)){  ?>
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
@@ -55,7 +55,6 @@ ob_start();
                                 <p> <?=  $messagesPrinted[$i]['content'] ?></p>
                                 <p class="text-muted"> <?= $messagesPrinted[$i]['date'] ?> </p>
                             </div>
-                            <hr>
 
 
                         <?php } else { ?>
@@ -65,7 +64,6 @@ ob_start();
                                 <p> <?=  $messagesPrinted[$i]['content'] ?></p>
                                 <p class="text-muted"> <?= $messagesPrinted[$i]['date'] ?> </p>
                             </div>
-                            <hr>
 
 
                         <?php } ?>
