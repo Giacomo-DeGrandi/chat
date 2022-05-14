@@ -36,6 +36,13 @@ class User extends Model{
         $result = $this->selectQuery($sql,  $params);
         return $result->fetchAll();
     }
+    public function getNameById($id)
+    {
+        $sql = "SELECT * FROM users WHERE id = :id";
+        $params = [':id' => $id ];
+        $result = $this->selectQuery($sql,  $params);
+        return $result->fetchAll();
+    }
 
     public function userConnected($email)
     {

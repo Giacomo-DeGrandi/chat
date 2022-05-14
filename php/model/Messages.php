@@ -25,15 +25,14 @@ class Messages extends Model{
 
     public function getAllMessagesByChannel($channelId){
 
-        $sql = 'SELECT  messages.id, messages.sent_by, messages.date, messages.content,
-                        users.name
+        $sql = 'SELECT  messages.id, messages.sent_by, messages.date, messages.content, messages.id_channel,
+                        users.name, users.id
                         FROM messages
                         INNER JOIN users ON messages.sent_by = users.id
-                        WHERE id_channel = :id_channel';
-        $p = [':id_channel'  =>  $channelId ];
+                        WHERE messages.id_channel = :id_channel';
+        $p = [':id_channel'  =>  intval($channelId) ];
         $check = $this->selectQuery($sql,$p);
         return $check->fetchAll();
-
     }
 
 }

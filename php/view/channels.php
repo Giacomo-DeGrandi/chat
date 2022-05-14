@@ -7,7 +7,7 @@ $title = 'Hall';
 
 $footer = '';
 
-if(!isset($_SESSION['connected'])){
+if(!isset($_COOKIE['connected'])){      // verify it  DAMN !!!!!!!!!!!!
     header('location: ../../index.php');
 }
 
@@ -46,7 +46,7 @@ ob_start();
                         <tr>
                             <td>
                                 <form method="post" class="d-flex flex-column justify-content-center text-cherry text-start shadow-sm">
-                                    <button type="submit" class="border border-0 h5 bg-light text-start p-2" value=" <?= $channelList[$i]['id'] ?>" name="chan">
+                                    <button type="submit" class="border border-0 h5 bg-light text-start p-2" value="<?= $channelList[$i]['id'] ?>" name="chan">
                                      <?= $channelList[$i]['name'] ?><br>
                                      <b class="h6 text-black"><?= $channelList[$i]['description'] ?></b>
                                     </button>

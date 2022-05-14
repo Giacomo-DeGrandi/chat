@@ -78,6 +78,26 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     })
 
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    function eraseCookie(name) {
+        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+
 
     // show Functions __________________________________-
 
@@ -101,6 +121,31 @@ document.addEventListener('DOMContentLoaded',function(){
         error.textContent = value;
     }
 
+    // interval______________________---
+
+    window.setInterval(updateMsg, 3000);
+
+    let chatn = getCookie('chan');
+
+    let allData = new FormData();
+
+    allData.append('all', chatn)
+
+    function updateMsg(){
+        fetch("../../php/controller/chat_controller.php", {
+            method: 'POST',
+            body: allData,
+        })
+            .then(r => r.json())
+            .then(d =>{
+                console.log(d)
+            })
+    }
+
+
+
+    // btn_____________________
+
     sendBtn.addEventListener('click', function(){
             if(testValidText()){
 
@@ -120,69 +165,33 @@ document.addEventListener('DOMContentLoaded',function(){
                 })
                     .then(r => r.json())
                     .then(d =>{
-                        console.log(d)
-
-                            // Select the node that will be observed for mutations
-                            let div2 = document.createElement('div')
-                            div2.setAttribute('class','bg-white float-start text-black border-0 rounded-3 p-2 mb-1 shadow-sm w-75')
-                            let div3 = document.createElement('div')
-                            div3.setAttribute('class','text-fat h3 text-black')
-                            let pName = document.createElement('p')
-                            pName.innerText = d
+                            let div = document.createElement('div')
+                            div.setAttribute('class','bg-light shadow-sm mb-1 p-1')
+                            let h3Name = document.createElement('h3')
+                            h3Name.setAttribute('class','text-fat')
+                            h3Name.innerText = d[0]
                             let pContent = document.createElement('p')
-                            pContent.innerText = d
+                            pContent.innerText = messCon.value
                             let pDate = document.createElement('p')
-                            pDate.innerText = d
-                            div3.setAttribute('class','text-fat h3 text-black')
-                            div2.appendChild(div3)
-                            div3.appendChild(pName)
-                            div2.appendChild(pContent)
-                            div2.appendChild(pDate)
-                            messDiv.appendChild(div2);
+                            pDate.setAttribute('class','text-muted')
+                            pDate.innerText = d[1]
+                            messDiv.appendChild(div)
+                            div.appendChild(h3Name)
+                            div.appendChild(pContent)
+                            div.appendChild(pDate)
+                            messDiv.appendChild(div);
                             showValids(messCon);
+
                         })
-                    .then(d => {
-
-                        console.log(d)
-
-                        // Options for the observer (which mutations to observe)
-                        const config = { attributes: true, childList: true, subtree: true };
-
-                        // Callback function to execute when mutations are observed
-                        const callback = function(mutationsList, observer) {
-                            // Use traditional 'for loops' for IE 11
-                            for(const mutation of mutationsList) {
-                                if (mutation.type === 'childList') {
-                                    console.log('A child node has been added or removed.');
-                                }
-                                else if (mutation.type === 'attributes') {
-                                    console.log('The ' + mutation.attributeName + ' attribute was modified.');
-                                }
-                            }
-                        };
-
-                        // Create an observer instance linked to the callback function
-                        const observer = new MutationObserver(callback);
-
-                        // Start observing the target node for configured mutations
-                        observer.observe(div, config);
-
-                        // Later, you can stop observing
-                        observer.disconnect();
-
-                    })
-
-
             }
-
-
     })
 
-
-    //_______________ LISTEN TO MESSAGE BOARD _______________//
 
 
 
 
 
 })
+
+
+

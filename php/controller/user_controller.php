@@ -138,12 +138,18 @@ if($_POST){
 
                 if (empty($errors)) {
 
-                    $user->userConnected($email);
-                    $_SESSION['id'] = $checkExists[0]['id'];
-                    $_SESSION["rights"] =  $checkExists[0]['rights'];
-                    $_SESSION["connected"] = '1';
+                    // apparently cookies doesn't set immediately,
+                    // the page is relocate by JS so they basically never set
+                    // to address this problem i set them in JS- directly -->(after encrypting them would be better)!
+                    //  BUT THE ONES WITH *POSSIBLY* sens D, They'll be SESSION -->(after encrypting them would be better)!!
 
-                    print_r(json_encode('logged'));
+                    $user->userConnected($email);
+
+                    $_SESSION['id']=$checkExists[0]['id'];
+                    $_SESSION['rights']= $checkExists[0]['rights'];
+
+                    print_r(json_encode('1'));
+
                 }
 
 

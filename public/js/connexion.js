@@ -50,6 +50,18 @@ document.addEventListener('DOMContentLoaded', function(){
         return isValid
     }
 
+    //  FUNCTIONS FOR COOKIES
+
+    function setCookie(name,value,days) {
+        let expires = "";
+        if (days) {
+            let date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
     // validation TESTS_______________________________-
 
     // blank
@@ -104,10 +116,10 @@ document.addEventListener('DOMContentLoaded', function(){
                 body: logData
             }).then(r => r.json())
                 .then(d => {
-                    if ( d === 'logged'){
+                    console.log(d)
+                    if(d==='1'){
+                        setCookie('connected', d , '1');
                         window.location = "../../php/view/profil.php";
-                    } else {
-                        console.log(d)
                     }
                 })
         } else {

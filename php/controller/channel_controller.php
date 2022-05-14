@@ -31,6 +31,6 @@ $channels = new Channels();
 $channelList = $channels->getAllChannels();
 
 if(isset($_POST['chan'])){
-    $_SESSION['chan'] = $_POST['chan'];
+    setcookie("chan", $_POST['chan'], time()+7200);  /* expire in 2 hour */
     header('location: ../view/chat.php');
 }

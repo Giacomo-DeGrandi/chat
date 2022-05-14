@@ -7,7 +7,7 @@ $title = 'Chat';
 
 $footer = '';
 
-if(!isset($_SESSION['connected'])){
+if(!isset($_COOKIE['connected'])){
     header('location: ../../index.php');
 }
 
@@ -32,7 +32,7 @@ ob_start();
 
         <div class="d-flex align-items-start justify-content-center p-1 bg-white flex-column w-75 h-100 overflow-hidden">
             <div class="h2 w-75">
-                <p><?= $chatname ?></p>
+                <p id="chatName"><?= $chatname ?></p>
             </div>
 
             <div class="shadow-sm p-1 h6">Active users</div>
@@ -49,23 +49,23 @@ ob_start();
                 <?php if(!empty($messagesPrinted)){  ?>
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                         <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
-                            <div class="bg-white shadow-sm mb-1 p-1">
-                                <div>
-                                    <h3 class="text-fat"><?= $messagesPrinted[$i]['name'] ?> </h3>
-                                </div>
+
+                            <div class="bg-light shadow-sm mb-1 p-1">
+                                <h3 class="text-fat"><?= $messagesPrinted[$i]['name'] ?> </h3>
                                 <p> <?=  $messagesPrinted[$i]['content'] ?></p>
                                 <p class="text-muted"> <?= $messagesPrinted[$i]['date'] ?> </p>
                             </div>
+                            <hr>
 
 
                         <?php } else { ?>
-                            <div class="bg-light shadow-sm mb-1 p-1">
-                                <div>
-                                    <h3 class="text-fat"><?= $messagesPrinted[$i]['name'] ?> </h3>
-                                </div>
+
+                            <div class="bg-white shadow-sm mb-1 p-1">
+                                <h3 class="text-fat"><?= $messagesPrinted[$i]['name'] ?> </h3>
                                 <p> <?=  $messagesPrinted[$i]['content'] ?></p>
                                 <p class="text-muted"> <?= $messagesPrinted[$i]['date'] ?> </p>
                             </div>
+                            <hr>
 
 
                         <?php } ?>

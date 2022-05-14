@@ -8,18 +8,23 @@ require_once('../model/User.php');
 
 $messages = new Messages();
 $channels = new Channels();
+$user = new User();
 
 
-if(isset($_SESSION['chan'])) {
+if(isset($_COOKIE)){
 
-    $messagesPrinted = $messages->getAllMessagesByChannel($_SESSION['chan']);
-    $channels = $channels->getChannelById($_SESSION['chan']);
+    if ($_COOKIE == isset($_COOKIE['chan'])) {
 
-    $chatname = $channels[0]['name'];
-    $chatDescription = $channels[0]['description'];
+        $messagesPrinted = $messages->getAllMessagesByChannel($_COOKIE['chan']);
+        $channelName = $channels->getChannelById($_COOKIE['chan']);
+        var_dump($messagesPrinted);
+        $chatname = $channelName[0]['name'];
+        $chatDescription = $channelName[0]['description'];
 
-    $val = [$_SESSION['id'],$_SESSION['chan']];
+        $val = [$_SESSION['id'], $_COOKIE['chan']];
+    }
 }
+
 
 if ($_POST) {
 
@@ -37,13 +42,23 @@ if ($_POST) {
             $date = getdate();
             $date = $date['year'].'-'.$date['mon'].'-'.$date['mday'].' '.$date['hours'].':'.$date['minutes'].':'.$date['seconds'];
             $write = $messages->write($sentBy, $content, $date, $id_channel);
+            $name = $user->getNameById($sentBy);
+            $name = $name[0]['name'];
 
-
-        if(is_array($write)){
-                print_r(json_encode($_SESSION['id']));
+            if(is_array($write)){
+                print_r(json_encode([$name,$date]));
             } else {
                 print_r(json_encode('error, contact admin'));
             }
+
+            break;
+
+        case (isset($_POST['all'])):
+
+            $chId = $_POST['all'];
+            $chId = $channels->getChannelById($chId);
+            $allMsg = $messages->getAllMessagesByChannel($chId[0]['id']);
+            print_r(json_encode($allMsg));
 
             break;
 

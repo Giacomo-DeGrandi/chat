@@ -8,8 +8,8 @@ ob_start();
         <div class="d-flex align-items-center justify-content-center justify-content-evenly">
             <div class="display-5 col-lg-1"></div>
             <a href="../../index.php" class="display-5 col-lg-3">MXG</a>
-            <?php   if(isset($_SESSION['connected']) && isset($_SESSION['rights'])){  ?>
-                <?php   if($_SESSION['connected'] === '1'){  ?>
+            <?php   if(isset($_COOKIE['connected']) && isset($_SESSION['rights'])){  ?>
+                <?php   if($_COOKIE['connected'] === '1'){  ?>
 
                     <form method="post" class="col-lg-2 ms-3">
                         <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 " name="logout">Log out</button>

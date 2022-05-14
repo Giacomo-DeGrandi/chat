@@ -7,10 +7,9 @@ $title = 'Account';
 
 $footer = '';
 
-if(!$_SESSION['connected']){
-    header('location:../../index.php');
+if(!isset($_SESSION['id'])){
+        header('location: ../../index.php');
 }
-
 
 
 require_once('../model/Model.php');

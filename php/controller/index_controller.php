@@ -7,7 +7,7 @@ require_once('php/model/User.php');
 
 if(isset($_POST['logout'])){
     $user = new User();
-    $user->userDisconnect($_SESSION['id']);
+    $user->userDisconnect($_COOKIE['id']);
     session_destroy();
     header('location: index.php');
 }
