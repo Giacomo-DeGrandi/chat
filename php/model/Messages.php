@@ -15,6 +15,13 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
+    public function getAllMessages(){
+
+        $sql = 'SELECT * FROM messages';
+        $check = $this->selectQuery($sql);
+        return $check->fetchAll();
+    }
+
     public function getAllMessagesByUserId($id){
 
         $sql = 'SELECT * FROM messages WHERE sent_by = :sent_by';

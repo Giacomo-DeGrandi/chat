@@ -15,12 +15,19 @@ if(isset($_COOKIE)){
 
     if ($_COOKIE == isset($_COOKIE['chan'])) {
 
+        // get active users
+
+        $activeUsers = $user->getAllActiveUserName();
+
+        // Get messages to be displayed
+
         $messagesPrinted = $messages->getAllMessagesByChannel($_COOKIE['chan']);
         $channelName = $channels->getChannelById($_COOKIE['chan']);
         $chatname = $channelName[0]['name'];
         $chatDescription = $channelName[0]['description'];
 
         $val = [$_SESSION['id'], $_COOKIE['chan']];
+
     }
 }
 

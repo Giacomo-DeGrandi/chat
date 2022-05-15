@@ -61,6 +61,27 @@ class User extends Model{
     }
 
 
+    public function getAllActiveUserName()
+    {
+        $sql = "SELECT name FROM `users` WHERE `connected`= '1'";
+        $result = $this->selectQuery($sql);
+        return $result->fetchAll();
+    }
+
+    public function getActiveUserCount($id)
+    {
+        $sql = "UPDATE `users` SET `connected`= '0' WHERE id = :id";
+        $params = [':id' => $id ];
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
+    public function getAllUsers()
+    {
+        $sql = "SELECT * FROM `users` ";
+        $result = $this->selectQuery($sql);
+        return $result->fetchAll();
+    }
 
 
 

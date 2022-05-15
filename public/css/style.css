@@ -15,8 +15,8 @@
     --cherry: #DA4167;
     --rose: #CD8270;
     --cream: #F4FFF8;
-    --grey-blue: #8BAAAD;
-    --gray-purp: #9E90A2;
+    --grey-blue: #F6FEFF;
+    --gray-purp: #FBF6FF;
     --blue-eyes: #98B9F2;
     --darkpurp : #2D143E;
     --vdarkpurp :#160A1F;
@@ -121,7 +121,36 @@ a {
 }
 
 
+/* SCROLLS  */
+
+
+.vh-75 {
+    height:75vh!important;
+}
+
+.vh-70 {
+    height:70vh!important;
+}
+
+.vh-50 {
+    max-height:50vh!important;
+}
+
+.vh-30 {
+    height:30vh!important;
+}
+
+.vh-25 {
+    height:25vh!important;
+}
+
+
 /*   TYPOS    */
+
+
+.text-main1{
+    color:var(--bg-main1)!important;
+}
 
 .display-1,.display-3 {
     font-family: var(--display)!important;
@@ -130,6 +159,8 @@ a {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
+
+
 
 .display-7 {
     font-family: var(--display)!important;

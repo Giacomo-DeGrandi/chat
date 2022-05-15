@@ -123,78 +123,6 @@ document.addEventListener('DOMContentLoaded',function(){
         error.textContent = value;
     }
 
-    // interval______________________---
-
-    window.setInterval(updateMsg, 1000);
-
-    let chatn = getCookie('chan');
-    let id = getCookie('id');
-
-    let allData = new FormData();
-
-    allData.append('all', chatn)
-
-    function updateMsg(){
-
-        fetch("../../php/controller/chat_controller.php", {
-            method: 'POST',
-            body: allData,
-        })
-            .then(r => r.json())
-            .then(d =>{
-
-                messDiv.innerHTML = '';
-
-                for(let u=0;u<d.length;u++){
-
-                    let vu = Object.values(d[u])
-
-                    if(vu[1]===id){
-
-                        let div = document.createElement('div')
-                        div.setAttribute('class','bg-light shadow-sm mb-1 p-1')
-                        let h3Name = document.createElement('h3')
-                        h3Name.setAttribute('class','text-fat')
-                        h3Name.innerText = vu[5]
-                        let pContent = document.createElement('p')
-                        pContent.innerText = vu[3]
-                        let pDate = document.createElement('p')
-                        pDate.setAttribute('class','text-muted')
-                        pDate.innerText = vu[2]
-
-                        messDiv.appendChild(div)
-                        div.appendChild(h3Name)
-                        div.appendChild(pContent)
-                        div.appendChild(pDate)
-                        messDiv.appendChild(div);
-
-                    } else {
-
-                        let div = document.createElement('div')
-                        div.setAttribute('class','bg-white shadow-sm mb-1 p-1')
-                        let h3Name = document.createElement('h3')
-                        h3Name.setAttribute('class','text-fat')
-                        h3Name.innerText = vu[5]
-                        let pContent = document.createElement('p')
-                        pContent.innerText = vu[3]
-                        let pDate = document.createElement('p')
-                        pDate.setAttribute('class','text-muted')
-                        pDate.innerText = vu[2]
-
-                        messDiv.appendChild(div)
-                        div.appendChild(h3Name)
-                        div.appendChild(pContent)
-                        div.appendChild(pDate)
-                        messDiv.appendChild(div);
-
-                    }
-
-
-
-
-                }
-            })
-    }
 
     // btn_____________________
 
@@ -242,6 +170,66 @@ document.addEventListener('DOMContentLoaded',function(){
             }
     })
 
+
+
+    // _______________  INTERVALS  __________________//
+
+    // ----> CHECK MESSAGES --------->
+
+    window.setInterval(updateMsg, 1000);
+
+    let chatn = getCookie('chan');
+    let id = getCookie('id');
+
+    let allData = new FormData();
+
+    allData.append('all', chatn)
+
+    function updateMsg(){
+
+        fetch("../../php/controller/chat_controller.php", {
+            method: 'POST',
+            body: allData,
+        })
+            .then(r => r.json())
+            .then(d =>{
+
+                messDiv.innerHTML = '';
+
+                for(let u=0;u<d.length;u++){
+
+                    let vu = Object.values(d[u])
+                    let div = document.createElement('div')
+
+                    if(vu[1]===id){
+
+                        div.setAttribute('class','bg-grey-bl shadow-sm mb-1 p-1')
+                    } else {
+
+                        div.setAttribute('class', 'bg-grey-pr shadow-sm mb-1 p-1')
+                    }
+                        let h3Name = document.createElement('h3')
+                        h3Name.setAttribute('class','text-fat p-1')
+                        h3Name.innerText = vu[5]
+                        let pContent = document.createElement('p')
+                        pContent.setAttribute('class','p-1')
+                        pContent.innerText = vu[3]
+                        let pDate = document.createElement('p')
+                        pDate.setAttribute('class','text-muted')
+                        pDate.innerText = vu[2]
+
+                        messDiv.appendChild(div)
+                        div.appendChild(h3Name)
+                        div.appendChild(pContent)
+                        div.appendChild(pDate)
+                        messDiv.appendChild(div);
+
+
+                }
+            })
+    }
+
+    // -----> CHECK ACTIVE USERS  ---->//
 
 
 
