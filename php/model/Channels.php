@@ -42,5 +42,20 @@ class Channels extends Model{
         return $check->fetchAll();
     }
 
+    function addNewChannel($name,$desc,$date){
+        $sql= 'INSERT INTO channels (name, description, date_of_creation) VALUES (:name, :description, :date_of_creation)';
+        $p = [':name'  =>  $name, ':description'  =>  $desc , ':date_of_creation' => $date ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
+    function deleteChannel($id){
+        $sql= 'DELETE FROM channels WHERE id = :id';
+        $p = [':id'  =>  $id ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
+
 }
 

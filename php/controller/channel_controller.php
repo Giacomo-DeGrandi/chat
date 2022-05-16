@@ -27,11 +27,24 @@ $channels = new Channels();
 
 // In database my user has a constraint on the email column
 // ALTER TABLE utilisateurs ADD CONSTRAINT email UNIQUE (email);
+// but it probably didn't worked cause Isam instead of Inno
 
 $channelList = $channels->getAllChannels();
 
-if(isset($_POST['chan'])){
+$allReplies = [];
+$lastActivity = [];
 
+for($k=0;$k<=isset($channelList[$k]);$k++){
+    $id = $channelList[$k]['id'];
+    $messagesCount = $messages->countMessagesByChannel($id);
+    $last = $messages->getLastActivity($id);
+    $lastActivity[] = $last[0][0];
+    $allReplies[]  = $messagesCount[0][0];
+}
+
+
+
+if(isset($_POST['chan'])){
     setcookie("chan", $_POST['chan'], time()+7200);  /* expire in 2 hour */
     header('location: ../view/chat.php');
 }

@@ -123,6 +123,17 @@ a {
 
 /* SCROLLS  */
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+*{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 
 .vh-75 {
     height:75vh!important;
@@ -187,6 +198,12 @@ a {
 .text-fat {
     font-family: var(--display)!important;
     font-weight: bolder!important;
+}
+
+/*------------------   VALID OR NOT   _________________*/
+
+.border-cherry{
+    border-color: var(--cherry)!important;
 }
 
 /*------------------   VALID OR NOT   _________________*/

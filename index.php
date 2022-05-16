@@ -11,9 +11,6 @@ require_once('php/controller/index_controller.php');
 
 
 
-//session_destroy();
-
-
 
 ob_start();
 ?>
@@ -44,6 +41,8 @@ $head = ob_get_clean();
 
 ob_start();
 ?>
+<?php setcookie('testcookie', "hello");
+if (isset($_COOKIE['testcookie'])) { ?>
     <div class="container-fluid">
 
         <div class="d-flex align-items-center justify-content-center">
@@ -57,7 +56,7 @@ ob_start();
             <div class="col">
 
                 <div class="h1 fw-bold">
-                    <b>The easyiest chat of the</b><p class="display-7">web</p>
+                    <b>The easiest chat of the</b><p class="display-7">web</p>
                 </div>
                 <p class="lead">
                     Chat with users of our communities<br><br>
@@ -114,6 +113,11 @@ ob_start();
 
     </div>
 
+    <?php  } else { ?>
+
+        <div class="display-1">please enable cookies to use this site </div>
+
+    <?php  }  ?>
 <?php
 
 $main = ob_get_clean();

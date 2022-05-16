@@ -15,12 +15,12 @@ ob_start();
                         <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 " name="logout">Log out</button>
                     </form>
 
-                    <a href="../../php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Account</a>
-                    <a href="../../php/view/channels.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Hall</a>
+                    <a href="../../php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 p-1 col-lg-2 ms-3">Account</a>
+                    <a href="../../php/view/channels.php" class="text-center border border-0 rounded-pill shadow display-7 p-1 col-lg-2 ms-3">Hall</a>
 
                     <?php   if($_SESSION['rights'] === '42'){ ?>
 
-                        <a href="../../php/view/admin.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Admin</a>
+                        <a href="../../php/view/admin.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3 p-1">Admin</a>
 
                     <?php  }  ?>
 

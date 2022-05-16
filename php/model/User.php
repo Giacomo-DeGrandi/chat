@@ -83,6 +83,25 @@ class User extends Model{
         return $result->fetchAll();
     }
 
+    public function getAllRights()
+    {
+        $sql = "SELECT rights FROM `users` ";
+        $result = $this->selectQuery($sql);
+        return $result->fetchAll();
+
+    }
+
+    public function deleteUser($id)
+    {
+        $sql = "DELETE FROM users WHERE id = :id";
+        $p = [':id' => $id ];
+        $result = $this->selectQuery($sql,$p);
+        return $result->fetchAll();
+
+    }
+
+
+
 
 
 }

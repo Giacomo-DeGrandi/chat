@@ -200,26 +200,30 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     let vu = Object.values(d[u])
                     let div = document.createElement('div')
+                    let h4Name = document.createElement('h4')
+
 
                     if(vu[1]===id){
 
-                        div.setAttribute('class','bg-grey-bl shadow-sm mb-1 p-1')
+                        div.setAttribute('class','text-end border border-1 rounded-2 p-2 w-75 bg-grey-bl shadow-sm mb-1 mx-2')
+                        h4Name.setAttribute('class','text-fat p-1 ms-4')
+
                     } else {
 
-                        div.setAttribute('class', 'bg-grey-pr shadow-sm mb-1 p-1')
+                        div.setAttribute('class', 'text-start border border-1 rounded-2 p-2 w-75 bg-grey-pr shadow-sm mb-1 mx-2')
+                        h4Name.setAttribute('class','text-fat p-1 me-4')
                     }
-                        let h3Name = document.createElement('h3')
-                        h3Name.setAttribute('class','text-fat p-1')
-                        h3Name.innerText = vu[5]
+
+                        h4Name.innerText = vu[5]
                         let pContent = document.createElement('p')
                         pContent.setAttribute('class','p-1')
                         pContent.innerText = vu[3]
                         let pDate = document.createElement('p')
-                        pDate.setAttribute('class','text-muted')
+                        pDate.setAttribute('class','small text-muted')
                         pDate.innerText = vu[2]
 
                         messDiv.appendChild(div)
-                        div.appendChild(h3Name)
+                        div.appendChild(h4Name)
                         div.appendChild(pContent)
                         div.appendChild(pDate)
                         messDiv.appendChild(div);

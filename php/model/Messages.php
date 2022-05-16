@@ -42,5 +42,45 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
+    public function deleteMessage($id)
+    {
+        $sql = "DELETE FROM messages WHERE id = :id";
+        $p = [':id' => $id ];
+        $result = $this->selectQuery($sql,$p);
+        return $result->fetchAll();
+
+    }
+
+    public function deleteAllUsersMessagesByUserId($id_user)
+    {
+        $sql = "DELETE FROM messages WHERE sent_by = :sent_by";
+        $p = [':sent_by' => $id_user ];
+        $result = $this->selectQuery($sql,$p);
+        return $result->fetchAll();
+
+    }
+    public function deleteAllChannelMessages($id_channel)
+    {
+        $sql = "DELETE FROM messages WHERE id_channel = :id_channel";
+        $p = [':id_channel' => $id_channel ];
+        $result = $this->selectQuery($sql,$p);
+        return $result->fetchAll();
+
+    }
+
+    function countMessagesByChannel($id_channel){
+        $sql= 'SELECT COUNT(id_channel) FROM messages WHERE id_channel = :id_channel';
+        $p = [':id_channel'  =>  $id_channel ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
+    function getLastActivity($id_channel){
+        $sql= 'SELECT MAX(date) AS "Last Activity" FROM messages WHERE id_channel = :id_channel';
+        $p = [':id_channel'  =>  $id_channel ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
 }
 
