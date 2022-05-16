@@ -42,9 +42,16 @@ class Channels extends Model{
         return $check->fetchAll();
     }
 
-    function addNewChannel($name,$desc,$date){
-        $sql= 'INSERT INTO channels (name, description, date_of_creation) VALUES (:name, :description, :date_of_creation)';
-        $p = [':name'  =>  $name, ':description'  =>  $desc , ':date_of_creation' => $date ];
+    function addNewChannel($name,$desc,$date,$last){
+        $sql= 'INSERT INTO channels (name, description, date_of_creation, last_update) VALUES (:name, :description, :date_of_creation, :last_update)';
+        $p = [':name'  =>  $name, ':description'  =>  $desc , ':date_of_creation' => $date , ':last_update' => $last];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
+    function modifyChannel($id, $name, $desc, $doc, $date){
+        $sql= 'UPDATE channels SET  name = :name, description = :description,  date_of_creation = :date_of_creation, last_update = :last_update  WHERE id = :id';
+        $p = [':id'  =>  $id, ':name'  =>  $name, ':description'  =>  $desc , ':date_of_creation'  =>  $doc , ':last_update' => $date ];
         $check = $this->selectQuery($sql,$p);
         return $check->fetchAll();
     }

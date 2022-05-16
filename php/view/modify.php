@@ -13,13 +13,23 @@ require_once('../model/Model.php');
 require_once('../model/User.php');
 require_once('../controller/modify_controller.php');
 
-ob_start();
+if(!isset($_SESSION['rights'])||$_SESSION['rights']!=='42'){
 
-if(isset($_COOKIE)){
-    var_dump($_COOKIE);
+
+    $user = new User();
+    $user->userDisconnect($_COOKIE['id']);
+    setcookie('connected', 0, time() - 3600000 * 240);
+    setcookie('chan',  0, time() - 3600000 * 240);
+    setcookie("id", 0, time() - 3600000 * 240);
+    session_destroy();
+    header('location: ../../index.php');
 }
 
-switch($chanMod||$messageMod||$userMod):
+
+ob_start();
+
+
+switch(isset($chanMod)||isset($messageMod)||isset($userMod)):
     case (isset($chanMod)):
         echo $chanMod;
     break;

@@ -49,9 +49,9 @@ if(isset($_POST)){
         case isset($_POST['addChannel']):
             $name = trim($_POST['channelName']);
             $desc = trim($_POST['channelDesc']);
-            if($name !== '' && $desc !== ''){
+            if(trim($name) !== '' && trim($desc) !== ''){
                 $now = date("Y-m-d H:i:s");
-                $channels->addNewChannel($name,$desc,$now);
+                $channels->addNewChannel($name,$desc,$now,$now);
                 header('location: ../view/admin.php');
             }
         break;
@@ -68,10 +68,8 @@ if(isset($_POST)){
 
             //unset other cookies not to make them interfere with views management
             //set if it doesn't exists
-            setcookie("usersModify", 0, time() +3600 * 24, "/");
-            setcookie("usersModify", 0, time() - 3600 * 24, "/");
-            setcookie("messagesModify", 0, time() + 3600 * 24, "/");
-            setcookie("messagesModify", 0, time() - 3600 * 24, "/");
+            setcookie("usersModify", 0, time() - 3600000 * 240);
+            setcookie("messagesModify", 0, time() - 3600000 * 240);
 
             //set cookie for modify view
             setcookie("chanModify", $_POST['chanModify'], time()+7200);  /* expire in 2 hour */
@@ -90,10 +88,8 @@ if(isset($_POST)){
 
             //unset other cookies not to make them interfere with views management
             // set unset
-            setcookie("chanModify", 0, time() + 3600 * 24, "/");
-            setcookie("chanModify", 0, time() - 3600 * 24, "/");
-            setcookie("messagesModify", 0, time() + 3600 * 24, "/");
-            setcookie("messagesModify", 0, time() - 3600 * 24, "/");
+            setcookie("chanModify", 0, time() - 3600000 * 240);
+            setcookie("messagesModify", 0, time() - 3600000 * 240);
 
             //set cookie for modify view
             setcookie('usersModify', $_POST['usersModify'], time()+7200);  /* expire in 2 hour */
@@ -111,10 +107,8 @@ if(isset($_POST)){
             $id= $_POST['messagesModify'];
 
             //unset other cookies not to make them interfere with views management
-            setcookie("chanModify", 0, time() + 3600 * 24, "/");
-            setcookie("chanModify", 0, time() - 3600 * 24, "/");
-            setcookie("usersModify",  0, time() + 3600 * 24, "/");
-            setcookie("usersModify",  0, time() - 3600 * 24, "/");
+            setcookie("chanModify", 0, time() - 3600000 * 240);
+            setcookie("usersModify",  0, time() - 3600000 * 240);
 
             //set cookie for modify view
             setcookie('messagesModify', $_POST['messagesModify'], time()+7200);  /* expire in 2 hour */
