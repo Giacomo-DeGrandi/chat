@@ -147,8 +147,8 @@ if($_POST){
 
                     $_SESSION['id']=$checkExists[0]['id'];
                     $_SESSION['rights']= $checkExists[0]['rights'];
-
-                    setcookie("id", null, -1, '/');
+                    setcookie("connected", 0, time() - 3600 * 24, "/");
+                    setcookie("id", 0, time() - 3600 * 24, "/");
                     setcookie("id", $checkExists[0]['id'], time()+7200);
                     print_r(json_encode($_SESSION['id']));
 

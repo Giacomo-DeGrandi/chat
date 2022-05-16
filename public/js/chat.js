@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded',function(){
             .then(d =>{
 
                 messDiv.innerHTML = '';
-
+                console.log(d)
                 for(let u=0;u<d.length;u++){
 
                     let vu = Object.values(d[u])

@@ -67,8 +67,11 @@ if(isset($_POST)){
             $id= $_POST['chanModify'];
 
             //unset other cookies not to make them interfere with views management
-            setcookie("usersModify", null, -1, '/');
-            setcookie("messagesModify", null, -1, '/');
+            //set if it doesn't exists
+            setcookie("usersModify", 0, time() +3600 * 24, "/");
+            setcookie("usersModify", 0, time() - 3600 * 24, "/");
+            setcookie("messagesModify", 0, time() + 3600 * 24, "/");
+            setcookie("messagesModify", 0, time() - 3600 * 24, "/");
 
             //set cookie for modify view
             setcookie("chanModify", $_POST['chanModify'], time()+7200);  /* expire in 2 hour */
@@ -86,8 +89,11 @@ if(isset($_POST)){
             $id= $_POST['usersModify'];
 
             //unset other cookies not to make them interfere with views management
-            setcookie("chanModify", null, -1, '/');
-            setcookie("messagesModify", null, -1, '/');
+            // set unset
+            setcookie("chanModify", 0, time() + 3600 * 24, "/");
+            setcookie("chanModify", 0, time() - 3600 * 24, "/");
+            setcookie("messagesModify", 0, time() + 3600 * 24, "/");
+            setcookie("messagesModify", 0, time() - 3600 * 24, "/");
 
             //set cookie for modify view
             setcookie('usersModify', $_POST['usersModify'], time()+7200);  /* expire in 2 hour */
@@ -105,8 +111,10 @@ if(isset($_POST)){
             $id= $_POST['messagesModify'];
 
             //unset other cookies not to make them interfere with views management
-            setcookie("chanModify", null, -1, '/');
-            setcookie("usersModify", null, -1, '/');
+            setcookie("chanModify", 0, time() + 3600 * 24, "/");
+            setcookie("chanModify", 0, time() - 3600 * 24, "/");
+            setcookie("usersModify",  0, time() + 3600 * 24, "/");
+            setcookie("usersModify",  0, time() - 3600 * 24, "/");
 
             //set cookie for modify view
             setcookie('messagesModify', $_POST['messagesModify'], time()+7200);  /* expire in 2 hour */
