@@ -33,6 +33,18 @@ if(isset($_COOKIE)){
         break;
         case isset($_COOKIE['messagesModify']):
             $selectedMessage = $messages->getMessageById($_COOKIE['messagesModify']);
+            $userName = $user->getUserNameById($selectedMessage[0]['sent_by']);
+            $channelMess = $channels->getChannelById($selectedMessage[0]['id_channel']);
+            $allChannels = $channels->getAllChannelsNames();
+            $aChan = [];
+            foreach($allChannels as $k => $v){
+                if($k === 'name'){
+                    $aChan[] = $v;
+                }
+            }
+            //$allChan = array_unique($aChan);
+            var_dump($aChan);
+
             include_once('../view/message_mod.php');
         break;
 

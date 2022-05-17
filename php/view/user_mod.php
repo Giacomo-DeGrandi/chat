@@ -53,7 +53,6 @@ ob_start();
 
                         <button type="submit" class="btn-outline-cherry rounded-pill bg-white p-2 mb-3" value="<?=  $selectedUser[0]['id']; ?>" name="modifyUser">modify</button>
                         <input type="hidden" class="d-none"  name="dob" value="<?=  $selectedUser[0]['dob']; ?>">
-                        <input type="hidden" class="d-none"  name="dob" value="<?=  $selectedUser[0]['data1']; ?>">
                     </form>
                 </div>
             <?php   }  ?>

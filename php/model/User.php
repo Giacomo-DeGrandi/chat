@@ -100,6 +100,14 @@ class User extends Model{
 
     }
 
+    public function getUserNameById($id)
+    {
+        $sql = "SELECT name FROM users WHERE id = :id";
+        $params = [':id' => $id ];
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
     public function deleteUser($id)
     {
         $sql = "DELETE FROM users WHERE id = :id";
