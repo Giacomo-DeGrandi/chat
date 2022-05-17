@@ -37,13 +37,14 @@ if(isset($_COOKIE)){
             $channelMess = $channels->getChannelById($selectedMessage[0]['id_channel']);
             $allChannels = $channels->getAllChannelsNames();
             $aChan = [];
-            foreach($allChannels as $k => $v){
-                if($k === 'name'){
-                    $aChan[] = $v;
+            for($j=0;$j<=isset($allChannels[$j]);$j++){
+                foreach($allChannels[$j] as $k => $v){
+                    if($k === 'name'){
+                        $aChan[] = $v;
+                    }
                 }
             }
-            //$allChan = array_unique($aChan);
-            var_dump($aChan);
+            $allChan = array_unique($aChan);
 
             include_once('../view/message_mod.php');
         break;
@@ -54,6 +55,7 @@ if(isset($_COOKIE)){
 
 
 if(isset($_POST)){
+
     var_dump($_POST);
 
     switch ($_POST):
@@ -81,9 +83,34 @@ if(isset($_POST)){
             }
         break;
 
-        case isset($_COOKIE['usersModify']):
-            include_once('../view/user_mod.php');
-        break;
+        case isset($_POST['modifyUser']):
+
+            if(isset($_POST['updUserName']) && isset($_POST['updUserEmail']) &&
+                isset($_POST['updUserData']) && isset($_POST['updUserRights']) &&
+                isset($_POST['connected'])){
+
+                if( trim($_POST['updUserName'])!==''||
+                    trim($_POST['updUserEmail'])!==''||
+                    $_POST['updUserData'] !=='' ||
+                    $_POST['connected'] !=='' ||
+                    $_POST['updUserRights'] !=='' ){
+
+                    $name = $_POST['updUserName'];
+                    $email = $_POST['updUserEmail'];
+                    $data = $_POST['updUserData'];
+                    $rights = intval($_POST['updUserRights']);
+                    $id = intval($_POST['modifyUser']);
+                    $connected = intval($_POST['connected']);
+
+                    $selectedUser = $user->modifyUser($id,$name,$email,$data,$rights,$connected);
+
+                    header('location: ../view/modify.php');
+
+                }
+            }
+            break;
+
+
         case isset($_COOKIE['messagesModify']):
             include_once('../view/message_mod.php');
         break;

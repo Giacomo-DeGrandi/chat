@@ -108,6 +108,15 @@ class User extends Model{
         return $result->fetchAll();
     }
 
+
+    public function modifyUser($id, $name, $email,$data,  $rights, $connected){
+        $sql = 'UPDATE `users` SET `name`=:name, `email`=:email, `rights`=:rights, `data1`=:data1, `connected`=:connected WHERE `id`=:id' ;
+        $params = ([':id' => $id, ':name' => $name, ':email' => $email, ':rights' => $rights,
+            ':data1' => $data , ':connected' => $connected]);
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
     public function deleteUser($id)
     {
         $sql = "DELETE FROM users WHERE id = :id";

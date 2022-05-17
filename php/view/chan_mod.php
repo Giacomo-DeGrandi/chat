@@ -21,7 +21,7 @@ ob_start();
                     <input type="text" name="updChanName" value="<?=  $selectedChan[0]['name'];  ?>" class="p-2 rounded-pill big border border-1 border-cherry text-black">
                     <label for="channelDesc" class="h5 p-2">Description</label>
                     <input type="text" name="updChanDesc"  value="<?=  $selectedChan[0]['description'];  ?>" class="p-2 rounded-pill border border-1 border-cherry text-black mb-3">
-                    <button type="submit" class="btn-outline-cherry rounded-pill bg-white mb-3" value="<?=  $selectedChan[0]['id']; ?>" name="modifyChannel">modify</button>
+                    <button type="submit" class="btn-outline-cherry rounded-pill bg-white mb-3" value="<?=  $selectedChan[0]['id']; ?>" name="modifyChannel">modify channel</button>
                     <input type="hidden" class="d-none"  name="date_of_creation" value="<?=  $selectedChan[0]['date_of_creation']; ?>">
                 </form>
             </div>
