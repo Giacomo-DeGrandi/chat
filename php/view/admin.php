@@ -26,10 +26,10 @@ ob_start();
             <!--  channels table & form -->
             <div class="d-flex p-1 rounded-2 shadow-sm mb-2">
                 <form method="post" class="p-1">
-                    <p class="h6 p-1">Add a channel here </p>
-                    <label for="channelName" class="h6">Name</label>
+                    <p class="h5 p-1">Add a channel here </p>
+                    <label for="channelName" class="h5">Name</label>
                     <input type="text" name="channelName" class="rounded-pill border border-1 border-cherry">
-                    <label for="channelDesc" class="h6">Description</label>
+                    <label for="channelDesc" class="h5">Description</label>
                     <input type="text" name="channelDesc" class="rounded-pill border border-1 border-cherry">
                     <button type="submit" class="btn-outline-cherry rounded-pill bg-white" name="addChannel">add +</button>
                 </form>

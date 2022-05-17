@@ -10,8 +10,13 @@
     --bg-main2 : #fcb045;
     --blackdarker: #2C2C26;
     --blackol : #3F3F37;
+    --blackol-v : #38423B;
+    --jetblack : #2D2D2A;
     --green : #43AA8B;
     --red: #DB504A;
+    --lavender: #B8BACF;
+    --light-grey: #D2D5DD;
+    --alabaster: #E8EBE4;
     --cherry: #DA4167;
     --rose: #CD8270;
     --cream: #F4FFF8;
@@ -23,12 +28,12 @@
 }
 
 .bg-light-d{
-    background: black linear-gradient(var(--cherry), var(--bg-main1)) fixed !important;
+    background-color: var(--blackol-v) !important;
     color: white!important;
 }
 
 body {
-    color: linear-gradient(to left top, var(--bg-main1), var(--bg-main2)) fixed !important;
+    color: linear-gradient(to left top, var(--darkpurp), var(--bg-main2)) fixed !important;
 
     /*edit*/
     background: white;
@@ -46,9 +51,7 @@ html {
 a {
     font-family: var(--display)!important;
     font-weight: bolder!important;
-    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: black!important;
 }
 
 /*    BG AND TEXT COLORS    */
@@ -64,14 +67,14 @@ a {
     display:inline!important;
 }
 .bg-grey-bl{
-    background-color: var(--grey-blue)!important;
+    background-color: var(--alabaster)!important;
 }
 .bg-grey-pr{
-    background-color: var(--gray-purp)!important;
+    background-color: var(--lavender)!important;
 }
 
 .bg-main1{
-    background-color: var(--darkpurp)!important;
+    background-color: var(--bg-main1)!important;
 }
 .bg-vdarkpurp{
     background-color: var(--vdarkpurp)!important;
@@ -102,13 +105,13 @@ a {
 }
 
 .h1,.h2,.h3,.h4,.h5,.h6{
-    color: var(--bg-main1)!important;
+    color: var(--jetblack)!important;
     font-family: var(--genfont)!important;
 }
 
 
 .text-cherry{
-    color: var(--cherry)!important;
+    color: var(--blackol)!important;
 }
 
 .btn-cherry{
@@ -166,7 +169,7 @@ a {
 .display-1,.display-3 {
     font-family: var(--display)!important;
     font-weight: bolder!important;
-    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    background: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -177,7 +180,7 @@ a {
     font-family: var(--display)!important;
     font-weight: bolder!important;
     font-size:1.2em!important;
-    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    background: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -185,7 +188,7 @@ a {
     font-family: var(--display)!important;
     font-weight: bolder!important;
     font-size:1.5em!important;
-    background: -webkit-linear-gradient(var(--bg-main1), var(--bg-main2));
+    background: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

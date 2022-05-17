@@ -31,7 +31,7 @@ ob_start();
     <div class="container-fluid">
 
         <div class="d-flex flex-column align-items-start justify-content-center p-1 flex-column w-100 overflow-hidden">
-            <div class="h2 w-75 bg-gold-white rounded-pill">
+            <div class="h2 w-75 rounded-pill">
                 <h1 class="text-fat text-main1 ms-2 p-1" id="chatName"><?= $chatname ?></h1>
             </div>
 
@@ -61,13 +61,13 @@ ob_start();
                         <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                             <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
 
-                                <div class="text-end bg-grey-bl border border-1 rounded-2 w-75 p-2 shadow-sm mb-1 mx-2">
-                                    <h4 class="text-fat p-1 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
+                                <div class="text-end border border-1 rounded-3 p-2 w-75 bg-grey-bl shadow-sm mb-1 mx-2">
+                                    <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                             <?php } else { ?>
 
-                                <div class="text-start bg-grey-pr border border-1 rounded-2 w-75 p-2 shadow-sm mb-1 mx-2">
-                                    <h4 class="text-fat p-1 me-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
+                                <div class="text-start border border-1 rounded-3 p-2 w-75 bg-grey-pr shadow-sm mb-1 mx-2">
+                                    <h4 class="text-fat p-2 me-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                             <?php } ?>
 

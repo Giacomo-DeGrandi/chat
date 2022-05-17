@@ -27,7 +27,7 @@ ob_start();
 ?>
     <div class="container-fluid">
 
-        <div class="d-flex align-items-center justify-content-center p-5 bg-gold-white">
+        <div class="d-flex align-items-center justify-content-center p-5">
            <div class="display-1">
                <p>your account</p>
                <p>discussions you follow</p>

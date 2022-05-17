@@ -62,6 +62,10 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     }
 
+    // always on bottom_________________________________
+
+    let lastMess = document.querySelector("#messages > div:last-child")
+    lastMess.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
 
     ///___________________________________________________________________________________________________///
@@ -205,13 +209,13 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     if(vu[1]===id){
 
-                        div.setAttribute('class','text-end border border-1 rounded-2 p-2 w-75 bg-grey-bl shadow-sm mb-1 mx-2')
-                        h4Name.setAttribute('class','text-fat p-1 ms-4')
+                        div.setAttribute('class','text-end border border-1 rounded-3 p-2 w-75 bg-grey-bl shadow-sm mb-1 mx-2')
+                        h4Name.setAttribute('class','text-fat p-2 ms-4')
 
                     } else {
 
-                        div.setAttribute('class', 'text-start border border-1 rounded-2 p-2 w-75 bg-grey-pr shadow-sm mb-1 mx-2')
-                        h4Name.setAttribute('class','text-fat p-1 me-4')
+                        div.setAttribute('class', 'text-start border border-1 rounded-3 p-2 w-75 bg-grey-pr shadow-sm mb-1 mx-2')
+                        h4Name.setAttribute('class','text-fat p-2 me-4')
                     }
 
                         h4Name.innerText = vu[5]

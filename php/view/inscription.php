@@ -23,7 +23,7 @@ ob_start();
 ?>
     <div class="container-fluid">
 
-        <div class="d-flex align-items-center justify-content-center p-5 bg-gold-white">
+        <div class="d-flex align-items-center justify-content-center p-5 bg-white">
             <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap">
 
                 <div class="d-flex align-items-center justify-content-center p-4">

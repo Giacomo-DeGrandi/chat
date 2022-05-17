@@ -21,10 +21,18 @@ if(isset($_COOKIE)){
         break;
         case isset($_COOKIE['usersModify']):
             $selectedUser = $user->getUserInfosById($_COOKIE['usersModify']);
+            $allRights = $user->getAllRights();
+            $rights = [];
+            for($j=0;$j<=isset($allRights[$j]);$j++){
+                for($m=0;$m<=isset($allRights[$j][$m]);$m++){
+                    $rights[] = $allRights[$j][$m];
+                }
+            }
+            $rights = array_unique($rights);
             include_once('../view/user_mod.php');
         break;
         case isset($_COOKIE['messagesModify']):
-            $selectedMessage = $messages->getMessageById($_COOKIE['usersModify']);
+            $selectedMessage = $messages->getMessageById($_COOKIE['messagesModify']);
             include_once('../view/message_mod.php');
         break;
 
@@ -55,7 +63,8 @@ if(isset($_POST)){
 
                     $selectedChan = $channels->modifyChannel($id,$name,$desc,$doc,$date);
 
-                    include_once('../view/chan_mod.php');
+                    header('location: ../view/modify.php');
+
                 }
             }
         break;
