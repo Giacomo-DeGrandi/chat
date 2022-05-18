@@ -17,6 +17,14 @@ class User extends Model{
         return $check->fetchAll();
     }
 
+    public function checkExistsUpdate($email,$id)
+    {
+        $sql= 'SELECT * FROM users WHERE email = :email AND id != :id ' ;
+        $params = [':email' => $email, ':id' => $id ];
+        $check = $this->selectQuery($sql,$params);
+        return $check->fetchAll();
+    }
+
     public function subscribeUser($username, $email, $password, $rights, $dob, $data1, $connected){
 
         $sql = "INSERT INTO `users`(`name`, `email`, `password`, `rights`, `dob`, `data1`, `connected`) 
@@ -104,6 +112,13 @@ class User extends Model{
     {
         $sql = "SELECT name FROM users WHERE id = :id";
         $params = [':id' => $id ];
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
+    public function submitUpdateUser($name, $email, $pw,$id){
+        $sql = 'UPDATE `users` SET `name`=:name,`email`=:email ,`password`= :password WHERE id =:id';
+        $params = ([':id' => $id, ':name' => $name, ':email' => $email, ':password' => $pw]);
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();
     }

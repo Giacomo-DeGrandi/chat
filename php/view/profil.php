@@ -67,13 +67,13 @@ ob_start();
 
                 <div class="py-1 text-start">
                     <label for="username" class="py-1 text-cherry">USERNAME</label><br>
-                    <input type="text" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="username" id="username">
+                    <input type="text" autocomplete="off" value="<?= $userInfo[0]['name'] ?>" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="username" id="username">
                     <small></small>
                 </div>
 
                 <div class="py-1 text-start">
                     <label for="email" class="py-1 text-cherry">EMAIL</label><br>
-                    <input type="email" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="email" id="email">
+                    <input type="email" autocomplete="off"  value="<?= $userInfo[0]['email'] ?>" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="email" id="email">
                     <small></small>
                 </div>
 
@@ -90,7 +90,7 @@ ob_start();
                 </div>
 
                 <div class="py-4 p-4">
-                    <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" id="submitUpdateUser">
+                    <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" value="<?= $userInfo[0]['id'] ?>" id="submitUpdateUser">
                         <i class="text-fat">modify</i>
                     </button>
                 </div>

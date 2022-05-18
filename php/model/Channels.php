@@ -45,12 +45,6 @@ class Channels extends Model{
 
     }
 
-    function addActiveUser($userId){
-        $sql= 'UPDATE channels SET active_users = active_users + :active_users';
-        $p = [':active_users'  =>  $userId ];
-        $check = $this->selectQuery($sql,$p);
-        return $check->fetchAll();
-    }
 
     function addNewChannel($name,$desc,$date,$last){
         $sql= 'INSERT INTO channels (name, description, date_of_creation, last_update) VALUES (:name, :description, :date_of_creation, :last_update)';

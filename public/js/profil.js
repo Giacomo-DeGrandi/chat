@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
     //_______________ VALIDATION FOR EMAILS ____________//
 
-    const testValidEmail = () => {
+    const testValidEmailUpdate = () => {
         // initialise my valid condition to false to test the errors
         let isValid = false
         // min num of chars
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded',function(){
         let max = 35
         // take away spaces
         let emailVal = email.value.trim();
+        let submitUpdVal= submitUpd.value.trim();
 
         // test if required function is valid else give an error
         if (!isRequired(emailVal)) {
@@ -62,7 +63,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
             let formData = new FormData();
 
-            formData.append('emailExists', emailVal);
+            formData.append('emailExistsUpdate', emailVal);
+            formData.append('emailExistsUpdateId', submitUpdVal);
 
             fetch("../../php/controller/profil_controller.php", {
                 method: 'POST',
@@ -183,7 +185,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 testValidName();
                 break;
             case 'email':
-                testValidEmail();
+                testValidEmailUpdate();
                 break;
             case 'password':
                 testValidPassword();
@@ -224,7 +226,7 @@ document.addEventListener('DOMContentLoaded',function(){
         event.preventDefault()
         // validate forms
         let nameV = testValidName(),
-            emailV = testValidEmail(),
+            emailV = testValidEmailUpdate(),
             passwordV = testValidPassword(),
             confPasswordV = testPasswordConfirmation();
 
@@ -246,6 +248,9 @@ document.addEventListener('DOMContentLoaded',function(){
                 body: submitData
             }).then(r => r.json())
                 .then(d => {
+
+                    console.log(d)
+
                     if (d === 'updated') {
                         window.location = "../../php/view/profil.php";
                     }
