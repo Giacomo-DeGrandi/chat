@@ -86,7 +86,7 @@ class Messages extends Model{
 
 
     public function modifyMessages( $id, $content, $id_channel){
-        $sql = 'UPDATE messages SET content=:content, id_channel=:id_channel WHERE id=:id' ;
+        $sql = 'UPDATE messages SET content = :content, id_channel = :id_channel WHERE id = :id ' ;
         $params = ([':id' => $id, ':content' => $content, ':id_channel' => $id_channel]);
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();

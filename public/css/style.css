@@ -54,6 +54,7 @@ a {
     color: black!important;
 }
 
+
 /*    BG AND TEXT COLORS    */
 
 .bg-cherry{
@@ -124,7 +125,8 @@ a {
 }
 
 
-/* SCROLLS  */
+
+    /* SCROLLS  */
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
@@ -144,6 +146,10 @@ a {
 
 .vh-70 {
     height:70vh!important;
+}
+
+.vh-60 {
+    height:60vh!important;
 }
 
 .vh-50 {

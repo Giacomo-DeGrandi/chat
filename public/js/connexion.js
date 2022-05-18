@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function(){
         return isValid
     }
 
+
+
     //  FUNCTIONS FOR COOKIES
 
     function setCookie(name,value,days) {
@@ -117,10 +119,14 @@ document.addEventListener('DOMContentLoaded', function(){
             }).then(r => r.json())
                 .then(d => {
                     console.log(d)
-                    if(d){
+                    if(d !== 'Wrong password'){
                         setCookie('connected', 1 , '1');
                         setCookie('id', d , '1');
                         window.location = "../../php/view/profil.php";
+                    } else if(d === 'Wrong password'){
+
+                        testValidEmailLog();
+                        showErrors(pwLog, 'This password is wrong')
                     }
                 })
         } else {

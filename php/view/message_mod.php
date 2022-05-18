@@ -8,7 +8,7 @@ ob_start();
 
             <h3 class="text-fat text-cherry p-4">MODIFY MESSAGE</h3>
 
-            <?php  if(isset($selectedMessage)&&isset($userName)&&isset($channelMess)){ ?>
+            <?php  if(isset($selectedMessage)&&isset($userName)&&isset($channelMess)&&isset($allChan)&&isset($idChan)){ ?>
                 <!--  channels table & form -->
                 <div class="d-flex flex-column align-items-center justify-content-center p-1 rounded-2 shadow-sm mb-2">
                     <form method="post" class="p-3 w-75 d-flex flex-column" action="">
@@ -28,7 +28,7 @@ ob_start();
                         <label for="updMessChannel" class="h5 p-2">Channel</label>
                         <select id="updMessChannel" class="h5 p-1 border border-1 rounded-pill mb-2" name="updMessChannel">
                             <?php  for($l=0;$l<=isset($allChan[$l]);$l++){ ?>
-                                <option value="<?=  $allChan[$l];  ?>"> <?= $allChan[$l]; ?></option>
+                                <option value="<?=  $idChan[$l];  ?>"> <?= $allChan[$l]; ?></option>
                             <?php } ?>
                         </select>
 

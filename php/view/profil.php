@@ -7,14 +7,12 @@ $title = 'Account';
 
 $footer = '';
 
-if(!isset($_SESSION['id'])){
-        session_destroy();
-        header('location: ../../index.php');
-}
 
 
 require_once('../model/Model.php');
 require_once('../model/User.php');
+require_once('../controller/profil_controller.php');
+
 
 
 ob_start();
@@ -27,12 +25,116 @@ ob_start();
 ?>
     <div class="container-fluid">
 
-        <div class="d-flex align-items-center justify-content-center p-5">
-           <div class="display-1">
-               <p>your account</p>
-               <p>discussions you follow</p>
-               <p>new discussions</p>
-           </div>
+        <div class="d-flex align-items-center justify-content-start p-5">
+           <div class="h2 text-fat">YOUR ACCOUNT</div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center p-2">
+            <div class="h4 text-fat">Your personal informations</div>
+        </div>
+
+        <div class="d-flex flex-column align-items-center">
+
+            <table class="table w-75 flex-wrap">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Rights</th>
+                    <th>Date of birth</th>
+                    <th>status</th>
+                </tr>
+
+                <tr>
+                    <?php if(isset($userInfo)){  ?>
+
+                    <td><?= $userInfo[0]['id']  ?></td>
+                    <td><?= $userInfo[0]['name']  ?></td>
+                    <td><?= $userInfo[0]['email']  ?></td>
+                    <td><?= $userInfo[0]['rights']  ?></td>
+                    <td><?= $userInfo[0]['dob']  ?></td>
+                    <td><?= $userInfo[0]['connected']  ?></td>
+
+                    <?php } ?>
+                </tr>
+
+            </table>
+
+            <form method="post" action="" class="p-5 w-75">
+                <div class="h3 text-fat py-4 mb-3">Settings</div>
+                <div class="h5 mb-3">Modify your personal infos</div>
+
+                <div class="py-1 text-start">
+                    <label for="username" class="py-1 text-cherry">USERNAME</label><br>
+                    <input type="text" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="username" id="username">
+                    <small></small>
+                </div>
+
+                <div class="py-1 text-start">
+                    <label for="email" class="py-1 text-cherry">EMAIL</label><br>
+                    <input type="email" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="email" id="email">
+                    <small></small>
+                </div>
+
+                <div class="py-1 text-start">
+                    <label for="password" class="py-1 text-cherry">PASSWORD</label><br>
+                    <input type="password" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100"  name="password" id="password">
+                    <small class="flex-wrap"></small>
+                </div>
+
+                <div class="py-1 text-start">
+                    <label for="passwordConf" class="py-1 text-cherry">CONFIRM PASSWORD</label><br>
+                    <input type="password" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100" name="passwordConf" id="passwordConf">
+                    <small></small>
+                </div>
+
+                <div class="py-4 p-4">
+                    <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" id="submitSub">
+                        <i class="text-fat">modify</i>
+                    </button>
+                </div>
+
+            </form>
+
+
+            <div class="d-flex align-items-center justify-content-center p-2">
+                <div class="h4 text-fat">Last messages you've sent</div>
+            </div>
+
+
+            <table class="table w-75">
+
+                <tr>
+                    <th>Date</th>
+                    <th>Content</th>
+                    <th>On Channel</th>
+                </tr>
+
+                <?php if(isset($userMessages) and !empty($userMessages)){ ?>
+
+                    <?php for($j=0;$j<=isset($userMessages[$j]);$j++){  ?>
+
+                         <tr>
+
+                            <td><?= $userMessages[$j]['date']  ?></td>
+                            <td><?= $userMessages[$j]['content']  ?></td>
+                            <td><?= $userMessages[$j]['id_channel']  ?></td>
+
+                         </tr>
+
+                    <?php } ?>
+
+                <?php } else {  ?>
+
+                    <tr>
+                        <td>You haven't sent any message yet</td>
+                    </tr>
+
+                <?php } ?>
+
+            </table>
+
         </div>
 
     </div>

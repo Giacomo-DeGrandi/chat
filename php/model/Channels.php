@@ -22,6 +22,11 @@ class Channels extends Model{
         $check = $this->selectQuery($sql);
         return $check->fetchAll();
     }
+    public function getAllChannelsId(){
+        $sql = 'SELECT id FROM channels ';
+        $check = $this->selectQuery($sql);
+        return $check->fetchAll();
+    }
 
     public function getChannelById($id){
 

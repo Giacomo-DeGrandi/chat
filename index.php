@@ -2,7 +2,6 @@
 
 session_start();
 
-$footer = '';
 $header = '';
 
 require_once('php/model/Model.php');
@@ -122,6 +121,8 @@ if (isset($_COOKIE['testcookie'])) { ?>
 
 $main = ob_get_clean();
 
+
+require_once('php/view/footer.php');
 
 require_once('php/view/main.php');
 

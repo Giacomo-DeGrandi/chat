@@ -123,10 +123,7 @@ class User extends Model{
         $p = [':id' => $id ];
         $result = $this->selectQuery($sql,$p);
         return $result->fetchAll();
-
     }
-
-
 
 
 

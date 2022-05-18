@@ -13,7 +13,7 @@ $user = new User();
 
 if(isset($_COOKIE)){
 
-    if ($_COOKIE == isset($_COOKIE['chan'])) {
+    if (isset($_COOKIE['chan'])) {
 
         // get active users
 

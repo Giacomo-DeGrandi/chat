@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded',function(){
     // always on bottom_________________________________
 
     let lastMess = document.querySelector("#messages > div:last-child")
-    lastMess.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+        lastMess.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 
 
     ///___________________________________________________________________________________________________///
@@ -82,24 +82,10 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     })
 
-    function setCookie(name,value,days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
     function getCookie(name) {
         const value = `; ${document.cookie}`;
         const parts = value.split(`; ${name}=`);
         if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-
-    function eraseCookie(name) {
-        document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     }
 
 
@@ -132,46 +118,44 @@ document.addEventListener('DOMContentLoaded',function(){
 
     sendBtn.addEventListener('click', function(){
 
-            if(testValidText()){
+        if(testValidText()){
 
-                let plaintext = messCon.value
-                let sentBy = sendBtn.value.split(',')
+            let plaintext = messCon.value
+            let sentBy = sendBtn.value.split(',')
 
-                let textData = new FormData();
+            let textData = new FormData();
 
-                textData.append('messageContent', plaintext)
-                textData.append('id', sentBy[0])
-                textData.append('channel', sentBy[1])
+            textData.append('messageContent', plaintext)
+            textData.append('id', sentBy[0])
+            textData.append('channel', sentBy[1])
 
-                fetch("../../php/controller/chat_controller.php", {
-                    method: 'POST',
-                    body: textData,
+            fetch("../../php/controller/chat_controller.php", {
+                method: 'POST',
+                body: textData,
+            })
+                .then(r => r.json())
+
+                .then(d =>{
+
+                    let div = document.createElement('div')
+                    div.setAttribute('class','text-end border border-2 rounded-3 p-2 w-75 shadow-sm mb-1 mx-2')
+                    let h3Name = document.createElement('h4')
+                    h3Name.setAttribute('class','text-fat p-2 me-4')
+                    h3Name.innerText = d[0]
+                    let pContent = document.createElement('p')
+                    pContent.innerText = messCon.value
+                    pContent.setAttribute('class','p-1')
+                    let pDate = document.createElement('p')
+                    pDate.setAttribute('class','small text-muted')
+                    pDate.innerText = d[1]
+
+                    div.appendChild(h3Name)
+                    div.appendChild(pContent)
+                    div.appendChild(pDate)
+                    messDiv.appendChild(div);
+
                 })
-                    .then(r => r.json())
-
-                    .then(d =>{
-
-                            let div = document.createElement('div')
-                            div.setAttribute('class','bg-light shadow-sm mb-1 p-1')
-                            let h3Name = document.createElement('h3')
-                            h3Name.setAttribute('class','text-fat')
-                            h3Name.innerText = d[0]
-                            let pContent = document.createElement('p')
-                            pContent.innerText = messCon.value
-                            let pDate = document.createElement('p')
-                            pDate.setAttribute('class','text-muted')
-                            pDate.innerText = d[1]
-
-                            messDiv.appendChild(div)
-                            div.appendChild(h3Name)
-                            div.appendChild(pContent)
-                            div.appendChild(pDate)
-                            messDiv.appendChild(div);
-
-                            showValids(messCon);
-
-                        })
-            }
+        }
     })
 
 
@@ -209,28 +193,27 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     if(vu[1]===id){
 
-                        div.setAttribute('class','text-end border border-1 rounded-3 p-2 w-75 bg-grey-bl shadow-sm mb-1 mx-2')
+                        div.setAttribute('class','text-end border border-2 rounded-3 p-2 w-50 shadow-sm mb-1 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 ms-4')
 
                     } else {
 
-                        div.setAttribute('class', 'text-start border border-1 rounded-3 p-2 w-75 bg-grey-pr shadow-sm mb-1 mx-2')
+                        div.setAttribute('class', 'text-start border border-2 rounded-3 p-2 w-50 shadow-sm mb-1 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 me-4')
                     }
 
-                        h4Name.innerText = vu[5]
-                        let pContent = document.createElement('p')
-                        pContent.setAttribute('class','p-1')
-                        pContent.innerText = vu[3]
-                        let pDate = document.createElement('p')
-                        pDate.setAttribute('class','small text-muted')
-                        pDate.innerText = vu[2]
+                    h4Name.innerText = vu[5]
+                    let pContent = document.createElement('p')
+                    pContent.setAttribute('class','p-1')
+                    pContent.innerText = vu[3]
+                    let pDate = document.createElement('p')
+                    pDate.setAttribute('class','small text-muted')
+                    pDate.innerText = vu[2]
 
-                        messDiv.appendChild(div)
-                        div.appendChild(h4Name)
-                        div.appendChild(pContent)
-                        div.appendChild(pDate)
-                        messDiv.appendChild(div);
+                    div.appendChild(h4Name)
+                    div.appendChild(pContent)
+                    div.appendChild(pDate)
+                    messDiv.appendChild(div);
 
 
                 }
@@ -240,10 +223,5 @@ document.addEventListener('DOMContentLoaded',function(){
     // -----> CHECK ACTIVE USERS  ---->//
 
 
-
-
-
 })
-
-
 

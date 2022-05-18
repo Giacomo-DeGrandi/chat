@@ -110,6 +110,7 @@ if($_POST){
 
             break;
 
+
         case isset($_POST['submitLog']) :
 
                 $errors= [];
@@ -133,6 +134,9 @@ if($_POST){
 
                 if (!password_verify($password, $checkExists[0]['password'])) {
                     array_push($errors, "Wrong password");
+                    print_r(json_encode('Wrong password'));
+
+                    break;
                 }
 
 

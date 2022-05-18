@@ -32,7 +32,7 @@ ob_start();
                     </div>
                 </div>
 
-                <form action="" method="POST" id="formLog">
+                <form action="" method="POST" class="text-start" id="formLog">
 
                     <div class="row py-2 p-2">
                         <label for="email" class="py-1 text-cherry">EMAIL</label><br>

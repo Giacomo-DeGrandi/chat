@@ -36,14 +36,23 @@ if(isset($_COOKIE)){
             $userName = $user->getUserNameById($selectedMessage[0]['sent_by']);
             $channelMess = $channels->getChannelById($selectedMessage[0]['id_channel']);
             $allChannels = $channels->getAllChannelsNames();
+            $allChanId = $channels->getAllChannelsId();
             $aChan = [];
+            $idChan = [];
             for($j=0;$j<=isset($allChannels[$j]);$j++){
                 foreach($allChannels[$j] as $k => $v){
                     if($k === 'name'){
                         $aChan[] = $v;
                     }
                 }
+                foreach($allChanId[$j] as $k => $v){
+                    if($k === 'id'){
+                        $idChan[] = $v;
+                    }
+                }
+
             }
+
             $allChan = array_unique($aChan);
 
             include_once('../view/message_mod.php');
@@ -117,15 +126,12 @@ if(isset($_POST)){
                 if( $_POST['updMessCont']!==''){
 
                     $content = $_POST['updMessCont'];
-                    $id_channel = $_POST['updMessChannel'];
+                    $id_channel = intval($_POST['updMessChannel']);
                     $id = intval($_POST['modifyMessage']);
-
-                    var_dump($_POST);
-
 
                     $selectedUser = $messages->modifyMessages($id,$content,$id_channel);
 
-                    //header('location: ../view/modify.php');
+                    header('location: ../view/modify.php');
 
                 }
             }
