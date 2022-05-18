@@ -54,9 +54,8 @@ if(isset($_COOKIE)){
 }
 
 
-if(isset($_POST)){
 
-    var_dump($_POST);
+if(isset($_POST)){
 
     switch ($_POST):
 
@@ -111,7 +110,26 @@ if(isset($_POST)){
             break;
 
 
-        case isset($_COOKIE['messagesModify']):
+        case isset($_POST['modifyMessage']):
+
+            if(isset($_POST['updMessCont']) && isset($_POST['updMessChannel'])){
+
+                if( $_POST['updMessCont']!==''){
+
+                    $content = $_POST['updMessCont'];
+                    $id_channel = $_POST['updMessChannel'];
+                    $id = intval($_POST['modifyMessage']);
+
+                    var_dump($_POST);
+
+
+                    $selectedUser = $messages->modifyMessages($id,$content,$id_channel);
+
+                    //header('location: ../view/modify.php');
+
+                }
+            }
+
             include_once('../view/message_mod.php');
         break;
 

@@ -84,6 +84,14 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
+
+    public function modifyMessages( $id, $content, $id_channel){
+        $sql = 'UPDATE messages SET content=:content, id_channel=:id_channel WHERE id=:id' ;
+        $params = ([':id' => $id, ':content' => $content, ':id_channel' => $id_channel]);
+        $result = $this->selectQuery($sql, $params);
+        return $result->fetchAll();
+    }
+
     function getLastActivity($id_channel){
         $sql= 'SELECT MAX(date) AS "Last Activity" FROM messages WHERE id_channel = :id_channel';
         $p = [':id_channel'  =>  $id_channel ];
