@@ -61,7 +61,7 @@ ob_start();
 
             </table>
 
-            <form method="post" action="" class="p-5 w-75">
+            <form method="post" action="" class="p-5 w-75" id="formUpdate">
                 <div class="h3 text-fat py-4 mb-3">Settings</div>
                 <div class="h5 mb-3">Modify your personal infos</div>
 
@@ -90,7 +90,7 @@ ob_start();
                 </div>
 
                 <div class="py-4 p-4">
-                    <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" id="submitSub">
+                    <button type="submit" class="btn btn-outline-cherry shadow rounded-pill p-2 w-100" id="submitUpdateUser">
                         <i class="text-fat">modify</i>
                     </button>
                 </div>

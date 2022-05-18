@@ -40,8 +40,6 @@ $head = ob_get_clean();
 
 ob_start();
 ?>
-<?php setcookie('testcookie', "hello");
-if (isset($_COOKIE['testcookie'])) { ?>
     <div class="container-fluid">
 
         <div class="d-flex align-items-center justify-content-center">
@@ -112,11 +110,6 @@ if (isset($_COOKIE['testcookie'])) { ?>
 
     </div>
 
-    <?php  } else { ?>
-
-        <div class="display-1">please enable cookies to use this site </div>
-
-    <?php  }  ?>
 <?php
 
 $main = ob_get_clean();

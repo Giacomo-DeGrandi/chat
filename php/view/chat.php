@@ -61,8 +61,8 @@ ob_start();
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                     <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
 
-                    <div class="text-end border border-1 rounded-3 p-2 w-50 shadow-sm mb-1 mx-2">
-                        <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
+                        <div class="text-end border border-warning rounded-3 p-2 w-50 shadow-sm mb-1 mx-2">
+                            <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                         <?php } else { ?>
 
@@ -84,9 +84,9 @@ ob_start();
 
                 <div class="d-flex flex-row w-100 py-2" id="messBoard">
                     <div class="input-group mb-3">
-                        <input class="small form-control border border-1 rounded-pill bg-light" name="messageContent" id="messageContent" placeholder=" Message">
+                        <input class="small form-control border border-1 shadow rounded-pill bg-light" name="messageContent" id="messageContent" placeholder=" Message">
                         <div class="input-group-append">
-                            <button type="submit" class="input-group-text rounded-pill btn display-2 bg-cherry shadow-sm p-2" name="sendMessage"  value="<?= $val[0] ?>,<?= $val[1] ?>" id="sendMessage">
+                            <button type="submit" class="input-group-text rounded-pill btn display-2 bg-white shadow p-2" name="sendMessage"  value="<?= $val[0] ?>,<?= $val[1] ?>" id="sendMessage">
                                 <img src="../../public/icons/pplane.svg" alt="pplane">
                             </button>
                         </div>
