@@ -144,6 +144,14 @@ a {
     color: royalblue!important;
 }
 
+
+.logos {
+    width: 48px;
+    height: 48px;
+}
+
+
+
 /** Speech bubble */
 
 .speech-bubble {

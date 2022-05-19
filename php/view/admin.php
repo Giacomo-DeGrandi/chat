@@ -5,7 +5,7 @@ session_start();
 
 $title = 'Admin';
 
-$footer = '';
+
 $script = '';
 
 
@@ -260,6 +260,8 @@ $main = ob_get_clean();
 require_once('../controller/header_controller.php');
 
 require_once('header.php');
+
+require_once('footer.php');
 
 require_once('main.php');
 

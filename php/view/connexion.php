@@ -5,8 +5,6 @@ session_start();
 
 $title = 'Log In';
 
-$footer = '';
-
 
 
 if(isset($_SESSION['id'])){
@@ -76,6 +74,8 @@ require_once('../controller/header_controller.php');
 
 
 require_once('header.php');
+
+require_once('footer.php');
 
 require_once('main.php');
 

@@ -3,6 +3,7 @@
 session_start();
 
 $header = '';
+$footer = '';
 
 require_once('php/model/Model.php');
 require_once('php/model/User.php');
@@ -113,9 +114,6 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
-
-
-require_once('php/view/footer.php');
 
 require_once('php/view/main.php');
 

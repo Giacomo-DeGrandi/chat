@@ -5,7 +5,7 @@ session_start();
 
 $title = 'Hall';
 
-$footer = '';
+
 
 if(!isset($_COOKIE['connected'])){      // verify it  DAMN !!!!!!!!!!!!
     header('location: ../../index.php');
@@ -79,6 +79,8 @@ $main = ob_get_clean();
 require_once('../controller/header_controller.php');
 
 require_once('header.php');
+
+require_once('footer.php');
 
 require_once('main.php');
 
