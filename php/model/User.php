@@ -20,7 +20,7 @@ class User extends Model{
     public function checkExistsUpdate($email,$id)
     {
         $sql= 'SELECT * FROM users WHERE email = :email AND id != :id ' ;
-        $params = [':email' => $email, ':id' => $id ];
+        $params = [':email' => $email, ':id' => intval($id) ];
         $check = $this->selectQuery($sql,$params);
         return $check->fetchAll();
     }
@@ -118,7 +118,7 @@ class User extends Model{
 
     public function submitUpdateUser($name, $email, $pw,$id){
         $sql = 'UPDATE `users` SET `name`=:name,`email`=:email ,`password`= :password WHERE id =:id';
-        $params = ([':id' => $id, ':name' => $name, ':email' => $email, ':password' => $pw]);
+        $params = ([':id' => intval($id), ':name' => $name, ':email' => $email, ':password' => $pw]);
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();
     }

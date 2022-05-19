@@ -92,9 +92,9 @@ if($_POST){
 
             //check if user exists
             $chkExists = $user->checkExistsUpdate($email,$id);
-            var_dump($chkExists);
-            if ( !empty($chkExists)) {    array_push($errors, "This email already exists, please chose another email, or log in as another user");     }
 
+
+            if (!empty($chkExists)) { array_push($errors, "This email already exists, please chose another email, or log in as another user");     }
             // Finally, register user if there are no errors in the form
             if (empty($errors)) {
 

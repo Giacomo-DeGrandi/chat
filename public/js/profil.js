@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
             let submitData = new FormData();
 
-            submitData.append('submitUpdateUser', 'true');
+            submitData.append('submitUpdateUser', submitUpd.value);
             submitData.append('email', email.value);
             submitData.append('username', user.value);
             submitData.append('password', password.value);
