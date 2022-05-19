@@ -53,10 +53,9 @@ ob_start();
                             <tr>
                                 <td>
                                     <form method="post" class="d-flex flex-column justify-content-center text-cherry text-start shadow-sm">
-                                        <button type="submit" class="border border-0 h5 bg-light text-start" value="<?= $allChannels[$i]['id'] ?>" name="chan">
-                                            <?= $allChannels[$i]['id'] ?><br>
+                                        <button href="" type="submit" class="border border-0 h6 bg-light rounded-pill text-center" value="<?= $allChannels[$i]['id'] ?>" name="chan">
+                                            ➡️
                                         </button>
-                                    </form>
                                 </td>
 
                                 <td>
@@ -124,11 +123,7 @@ ob_start();
                             <tr>
 
                                 <td>
-                                    <form method="post" class="text-cherry text-start shadow-sm">
-                                        <button type="submit" class="border border-0 h5 bg-light text-start" value="<?= $allUsers[$i]['id'] ?>" name="chan">
-                                            <?= $allUsers[$i]['id'] ?><br>
-                                        </button>
-                                    </form>
+                                    <b>🆔<?= $allUsers[$i]['id'] ?></b>
                                 </td>
 
                                 <td>
@@ -198,11 +193,7 @@ ob_start();
                             <tr>
 
                                 <td>
-                                    <form method="post" class="text-cherry text-start shadow-sm">
-                                        <button type="submit" class="border border-0 h5 bg-light text-start" value="<?= $allMessages[$i]['id'] ?>" name="chan">
-                                            <?= $allMessages[$i]['id'] ?><br>
-                                        </button>
-                                    </form>
+                                    <b>🆔<?= $allMessages[$i]['id'] ?></b>
                                 </td>
 
                                 <td>

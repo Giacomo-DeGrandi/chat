@@ -103,31 +103,29 @@ ob_start();
                 <div class="h4 text-fat">Messages Info</div>
             </div>
 
-            <table class="table w-75 p-5">
-                <?php if(isset($occ)){   ?>
-                    <?php foreach($occ as $k => $v ){   ?>
-                    <tr>
+            <table class="table w-50 p-5">
 
-                        <th><?= $k ?> </th>
-                        <th>Channel you've been most involved</th>
-                        <th>Period of most activity</th>
-                    </tr>
-                    <?php }  ?>
                 <tr>
-                    <?php if(isset($countMessages) and !empty($countMessages)){ ?>
-                        <td><?= $countMessages[0][0];  ?></td>
-                    <?php } else {  ?>
-                        <td>You haven't sent any message yet</td>
-                    <?php } ?>
+                     <th>Channel name</th>
+                     <th>Number of messages sent</th>
                 </tr>
+
+                <?php if(isset($chanNamesWithNumbOfMess)){   ?>
+                    <?php foreach($chanNamesWithNumbOfMess as $k => $v ){   ?>
+                        <tr>
+                            <td><?= $k ?></td>
+                            <td><?= $v ?></td>
+                        </tr>
+                    <?php }  ?>
+                <?php }  ?>
 
             </table>
 
             <table class="table w-75 p-5">
                 <tr>
                     <th>Total number of messages sent</th>
-                    <th>Channel you've been most involved</th>
-                    <th>Period of most activity</th>
+                    <th>Channel you've been mostly involved into</th>
+                    <th>You're period of most activity</th>
                 </tr>
 
                 <tr>
