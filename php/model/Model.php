@@ -7,10 +7,19 @@ abstract class Model {
 
     function connect(){
 
+
+
         $server="localhost";
-        $username="root";
-        $password="";
-        $database="little_discord";
+        $username="disc";
+        $password="little_discord";
+        $database="carlo-de-grandi-giacomo_little_discord";
+
+        /*
+     $server="localhost";
+     $username="root";
+     $password="";
+     $database="little_discord";
+            */
 
         $dsn = "mysql:host=$server;dbname=$database;charset=UTF8";
         $this->conn = new PDO($dsn, $username, $password);
