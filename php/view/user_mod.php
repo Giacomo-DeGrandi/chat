@@ -29,8 +29,8 @@ ob_start();
 
                             <p class="h5 p-3">date of birth:<b> <?=  $selectedUser[0]['dob'];  ?></b> </p>
 
-                            <?php if($selectedUser[0]['connected'] === 1){  ?>
-                                <p class="h5 p-3">connected:<b>🟢</b> </p>
+                            <?php if($selectedUser[0]['connected'] === '1'){  ?>
+                                <p class="h5 p-3">connected:<b> 🟢</b> </p>
                             <?php  } else {   ?>
                                 <p class="h5 p-3">connected:<b> 🔴</b> </p>
                             <?php  }  ?>
