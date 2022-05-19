@@ -21,10 +21,10 @@ $script = ob_get_clean();
 
 ob_start();
 ?>
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
 
-        <div class="d-flex align-items-center justify-content-center p-5 bg-white">
-            <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap">
+        <div class="d-flex align-items-center justify-content-center p-5 bg-white w-50">
+            <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap ">
 
                 <div class="d-flex align-items-center justify-content-center p-4">
                         <div class="display-1 p-2 text-nowrap">
@@ -49,7 +49,7 @@ ob_start();
                     <div class="py-1 text-start">
                         <label for="password" class="py-1 text-cherry">PASSWORD</label><br>
                         <input type="password" autocomplete="off" class="p-1 border border-0 bg-light-d rounded-pill w-100"  name="password" id="password">
-                        <small class="flex-wrap"></small>
+                        <small></small>
                     </div>
 
                     <div class="py-1 text-start">

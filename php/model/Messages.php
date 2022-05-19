@@ -45,7 +45,7 @@ class Messages extends Model{
                         users.name, users.id
                         FROM messages
                         INNER JOIN users ON messages.sent_by = users.id
-                        WHERE messages.id_channel = :id_channel';
+                        WHERE messages.id_channel = :id_channel ORDER BY date ASC';
         $p = [':id_channel'  =>  intval($channelId) ];
         $check = $this->selectQuery($sql,$p);
         return $check->fetchAll();

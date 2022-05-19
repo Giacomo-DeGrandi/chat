@@ -118,6 +118,7 @@ class User extends Model{
 
     public function submitUpdateUser($name, $email, $pw,$id){
         $sql = 'UPDATE `users` SET `name`=:name,`email`=:email ,`password`= :password WHERE id =:id';
+        $pw = password_hash($pw, PASSWORD_ARGON2ID);
         $params = ([':id' => intval($id), ':name' => $name, ':email' => $email, ':password' => $pw]);
         $result = $this->selectQuery($sql, $params);
         return $result->fetchAll();

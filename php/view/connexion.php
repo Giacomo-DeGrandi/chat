@@ -21,10 +21,10 @@ $script = ob_get_clean();
 
 ob_start();
 ?>
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center justify-content-center">
 
-        <div class="d-flex align-items-center justify-content-center p-5 bg-white">
-            <div class="bg-white p-4 rounded rounded-2 shadow">
+        <div class="d-flex align-items-center justify-content-center p-5 bg-white w-50">
+            <div class="bg-white p-4 rounded rounded-2 shadow flex-wrap">
 
                 <div class="d-flex align-items-center justify-content-center p-4">
                     <div class="display-1 p-2">

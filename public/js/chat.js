@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 .then(d =>{
 
                     let div = document.createElement('div')
-                    div.setAttribute('class','text-end border border-warning border-2 rounded-3 p-2 w-75 shadow-sm mb-1 mx-2')
+                    div.setAttribute('class','text-end float-end border border-danger rounded-left p-2 w-50 shadow-sm mb-1 mx-2')
                     let h3Name = document.createElement('h4')
                     h3Name.setAttribute('class','text-fat p-2 me-4')
                     h3Name.innerText = d[0]
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded',function(){
             .then(d =>{
 
                 messDiv.innerHTML = '';
-                console.log(d)
+
                 for(let u=0;u<d.length;u++){
 
                     let vu = Object.values(d[u])
@@ -193,12 +193,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     if(vu[1]===id){
 
-                        div.setAttribute('class','text-end border border-warning rounded-3 p-2 w-50 shadow-sm mb-1 mx-2')
+                        div.setAttribute('class','text-end float-end border border-danger rounded-left p-2 w-50 shadow-sm mb-1 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 ms-4')
 
                     } else {
 
-                        div.setAttribute('class', 'text-start border border rounded-3 p-2 w-50 shadow-sm mb-1 mx-2')
+                        div.setAttribute('class', 'text-start float-start border border-dark rounded-right p-2 w-50 shadow-sm mb-1 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 me-4')
                     }
 

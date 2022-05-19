@@ -55,18 +55,18 @@ ob_start();
             <div class="vh-70 w-100 overflow-auto">
 
 
-                <div class="d-flex flex-column justify-content-center align-items-center rounded-0 p-5 shadow-sm" id="messages">
+                <div class="rounded-0 p-5 shadow-sm" id="messages">
 
                     <?php if(!empty($messagesPrinted)){  ?>
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                     <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
 
-                        <div class="text-end border border-warning rounded-3 p-2 w-50 shadow-sm mb-1 mx-2">
+                        <div class="text-end float-end border border-danger rounded-left p-2 w-50 shadow-sm mb-1 mx-2">
                             <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                         <?php } else { ?>
 
-                        <div class="text-start border border-1 rounded-3 p-2 w-50 shadow-sm mb-1 mx-2">
+                        <div class="text-start float-start border border-dark border-1 rounded-right p-2 w-50 shadow-sm mb-1 mx-2">
                             <h4 class="text-fat p-2 me-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                             <?php } ?>
