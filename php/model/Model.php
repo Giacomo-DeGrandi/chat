@@ -9,9 +9,9 @@ abstract class Model {
 
 
 
-        $server="localhost";
+        $server="localhost:3306";
         $username="disc";
-        $password="little_discord";
+        $password="testnow";
         $database="carlo-de-grandi-giacomo_little_discord";
 
         /*
