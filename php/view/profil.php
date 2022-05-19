@@ -49,9 +49,13 @@ ob_start();
                     <td><?= $userInfo[0]['id']  ?></td>
                     <td><?= $userInfo[0]['name']  ?></td>
                     <td><?= $userInfo[0]['email']  ?></td>
-                    <td><?= $userInfo[0]['rights']  ?></td>
+                        <?php if($userInfo[0]['rights']==='42'){ ?>
+                            <td>Administrator</td>
+                        <?php } elseif($userInfo[0]['rights']==='1'){ ?>
+                            <td>User</td>
+                        <?php } ?>
                     <td><?= $userInfo[0]['dob']  ?></td>
-                    <td><?= $userInfo[0]['connected']  ?></td>
+                    <td>🟢</td>
 
                     <?php } ?>
                 </tr>
@@ -96,9 +100,49 @@ ob_start();
 
 
             <div class="d-flex align-items-center justify-content-center p-2">
-                <div class="h4 text-fat">Last messages you've sent</div>
+                <div class="h4 text-fat">Messages Info</div>
             </div>
 
+            <table class="table w-75 p-5">
+                <?php if(isset($occ)){   ?>
+                    <?php foreach($occ as $k => $v ){   ?>
+                    <tr>
+
+                        <th><?= $k ?> </th>
+                        <th>Channel you've been most involved</th>
+                        <th>Period of most activity</th>
+                    </tr>
+                    <?php }  ?>
+                <tr>
+                    <?php if(isset($countMessages) and !empty($countMessages)){ ?>
+                        <td><?= $countMessages[0][0];  ?></td>
+                    <?php } else {  ?>
+                        <td>You haven't sent any message yet</td>
+                    <?php } ?>
+                </tr>
+
+            </table>
+
+            <table class="table w-75 p-5">
+                <tr>
+                    <th>Total number of messages sent</th>
+                    <th>Channel you've been most involved</th>
+                    <th>Period of most activity</th>
+                </tr>
+
+                <tr>
+                    <?php if(isset($countMessages) and !empty($countMessages)){ ?>
+                            <td><?= $countMessages[0][0];  ?></td>
+                    <?php } else {  ?>
+                            <td>You haven't sent any message yet</td>
+                    <?php } ?>
+                </tr>
+
+            </table>
+
+            <div class="d-flex align-items-center justify-content-center p-2">
+                <div class="h4 text-fat">Your Messages</div>
+            </div>
 
             <table class="table w-75">
 
@@ -109,6 +153,7 @@ ob_start();
                 </tr>
 
                 <?php if(isset($userMessages) and !empty($userMessages)){ ?>
+
 
                     <?php for($j=0;$j<=isset($userMessages[$j]);$j++){  ?>
 

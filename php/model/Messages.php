@@ -99,5 +99,13 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
+    public function messagesCountByUser($id_user){
+        $sql= 'SELECT COUNT(id) FROM messages WHERE sent_by = :sent_by ;';
+        $p = [':sent_by'  =>  $id_user ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
+
+
 }
 

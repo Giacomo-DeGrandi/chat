@@ -45,6 +45,18 @@ if(!isset($_SESSION['id'])AND !isset($_POST)) {
 
     $userInfo = $user->getUserInfosById($_SESSION['id']);
     $userMessages = $messages->getAllMessagesByUserId($_SESSION['id']);
+    $countMessages = $messages->messagesCountByUser($_SESSION['id']);
+
+    $chanOccur = [];
+    for($i=0;$i<=isset($userMessages[$i]);$i++){
+        foreach ($userMessages[$i] as $k => $v){
+            if($k ==='id_channel'){
+                $chanOccur[] = $v;
+            }
+        }
+    }
+    $occ = array_count_values($chanOccur);
+
 }
 
 
