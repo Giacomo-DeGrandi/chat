@@ -19,6 +19,8 @@ foreach ($_POST as $key => $value) {
 
 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+
+
 // instance  new user to set in db
 
 $user = new User();
@@ -151,13 +153,13 @@ if($_POST){
 
                     $_SESSION['id']=$checkExists[0]['id'];
                     $_SESSION['rights']= $checkExists[0]['rights'];
-                    setcookie("connected", 0, time() - 3600 * 24, "/");
-                    setcookie("id", 0, time() - 3600 * 24, "/");
+                    setcookie("connected", 0, time() - 3600000 * 240);
+                    setcookie("id", 0, time() - 3600000 * 240);
                     setcookie("id", $checkExists[0]['id'], time()+7200);
                     print_r(json_encode($_SESSION['id']));
 
                 }
-
+            break;
 
     endswitch;
 }

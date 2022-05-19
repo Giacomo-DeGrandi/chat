@@ -26,6 +26,14 @@ $messages = new Messages();
 $channels = new Channels();
 $user = new User();
 
+
+//  I DON T USE COOKIES CAUSE I CAN SET THEM IN JS WHILE SESSION ARE UNSETTABLE CAUSE SERVER-SIDE
+// THE CHOICE DERIVE FROM THE FACT THAT MY VALIDATION FROM CONNEXION.PHP IS
+// FIRST - VALIDATED IN JS, THEN SENT TO PHP THAN VALIDATED IN PHP AND THEN RESENT TO JS TO
+// RELOCATE THE USER... SO THE END PART IS IN JS, if i didn't had any validation on the profil if
+// a baduser set the right cookies it could manage to be admin
+
+
 if(!isset($_SESSION['id'])AND !isset($_POST)) {
     $user->userDisconnect($_SESSION['id']);
     setcookie('connected', 0, time() - 3600000 * 240);

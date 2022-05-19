@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     if(d !== 'Wrong password'){
                         setCookie('connected', 1 , '1');
                         setCookie('id', d , '1');
-                        window.location = "../../php/view/profil.php";
+                        window.location = "../../php/view/channels.php";
                     } else if(d === 'Wrong password'){
 
                         testValidEmailLog();

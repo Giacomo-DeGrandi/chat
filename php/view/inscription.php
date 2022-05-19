@@ -18,6 +18,10 @@ ob_start();
 $script = ob_get_clean();
 
 
+if(isset($_SESSION['id'])){
+    header('location: ../../index.php');
+}
+
 
 ob_start();
 ?>

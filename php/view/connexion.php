@@ -7,9 +7,11 @@ $title = 'Log In';
 
 $footer = '';
 
-require_once('../controller/header_controller.php');
 
 
+if(isset($_SESSION['id'])){
+    header('location: ../../index.php');
+}
 
 ob_start();
 ?>
@@ -69,6 +71,9 @@ ob_start();
 <?php
 
 $main = ob_get_clean();
+
+require_once('../controller/header_controller.php');
+
 
 require_once('header.php');
 

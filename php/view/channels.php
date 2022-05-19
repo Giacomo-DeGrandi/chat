@@ -45,9 +45,9 @@ ob_start();
                     <?php   for($i=0;$i<=isset($channelList[$i]);$i++){  ?>
                         <tr>
                             <td>
-                                <form method="post" class="d-flex flex-column justify-content-center text-cherry text-start shadow-sm">
+                                <form method="post" class="d-flex flex-column justify-content-center text-blue text-start shadow-sm">
                                     <button type="submit" class="border border-0 bg-white h4 text-start p-2" value="<?= $channelList[$i]['id'] ?>" name="chan">
-                                     <b class="text-fat text-cherry"><?= $channelList[$i]['name'] ?></b><br>
+                                     <b class="text-fat text-blue"><?= $channelList[$i]['name'] ?></b><br>
                                      <b class="h6 text-black"><?= $channelList[$i]['description'] ?></b>
                                     </button>
                                 </form>

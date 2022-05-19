@@ -8,7 +8,10 @@ require_once('php/model/Model.php');
 require_once('php/model/User.php');
 require_once('php/controller/index_controller.php');
 
-
+if(isset($_SESSION['rights'])&&!isset($_SESSION['id'])){
+    session_destroy();
+    header('location:index.php');
+}
 
 
 ob_start();
@@ -53,14 +56,11 @@ ob_start();
             <div class="col">
 
                 <div class="h1 fw-bold">
-                    <b>The easiest chat of the</b><p class="display-7">web</p>
+                    <b>The easiest chat of the</b><p class="text-fat text-cherry2 display-1b">web</p>
                 </div>
                 <p class="lead">
                     Chat with users of our communities<br><br>
                     Participate to Talks by arguments!<br>
-                    Messages are encrypted end-to-end to<br>
-                    preserve your privacy and the one<br>
-                    of the people you love!<br>
                 </p>
 
             </div>
@@ -73,8 +73,8 @@ ob_start();
 
         <div class="d-flex align-items-center justify-content-center">
 
-        <?php if(isset($_COOKIE['connected']) && isset($_SESSION['rights'])){   ?>
-            <?php   if($_COOKIE['connected'] === '1'){  ?>
+        <?php if(isset($_SESSION['rights'])){   ?>
+            <?php   if($_SESSION['rights'] === '1'){  ?>
 
                 <form method="post" class="col-lg-2 ms-3">
                     <button type="submit" class="text-center border border-0 rounded-pill shadow display-7 " name="logout">Log out</button>
@@ -83,27 +83,27 @@ ob_start();
                 <a href="php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Account</a>
                 <a href="php/view/chat.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Chat</a>
 
-                <?php   if($_SESSION['rights'] === '42'){ ?>
+                <?php  }  elseif($_SESSION['rights'] === '42'){ ?>
 
                     <a href="php/view/admin.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Admin</a>
+                    <a href="php/view/profil.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Account</a>
+                    <a href="php/view/chat.php" class="text-center border border-0 rounded-pill shadow display-7 col-lg-2 ms-3">Chat</a>
 
                 <?php  }  ?>
 
-            <?php   }  ?>
-
-        <?php   } else {  ?>
+            <?php   } else {   ?>
 
             <div class="text-center p-3">
                 <p>Log In to start messaging</p><br>
-                <a class="shadow p-2 rounded-pill bg-light link-dark" href="php/view/connexion.php">log in</a>
+                <a class="shadow p-2 rounded-pill bg-light text-cherry2 link-dark" href="php/view/connexion.php">log in</a>
             </div>
 
             <div class="text-center p-3">
                 <p>You haven't subscribe yet?</p><br>
-                <a class="big shadow p-2 rounded-pill bg-light link-dark" href="php/view/inscription.php">subscribe</a>
+                <a class="big shadow p-2 rounded-pill bg-light text-violet link-dark" href="php/view/inscription.php">subscribe</a>
             </div>
 
-        <?php   }  ?>
+            <?php } ?>
 
         </div>
 

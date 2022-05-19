@@ -5,7 +5,7 @@ session_start();
 
 $title = 'Chat';
 
-if(!isset($_COOKIE['connected'])){
+if(!isset($_SESSION['id'])){
     header('location: ../../index.php');
 }
 
@@ -36,22 +36,21 @@ ob_start();
             <div class="h6 bg-white" id="activeList">
                 <h3 class="shadow-sm p-1 text-fat text-cherry">Active users</h3>
 
-                <div class="flex-wrap">
-                    <h3 class=" text-fat text-cherry p-1 shadow-sm">
+                <div class="flex-wrap float-start">
+                    <h6 class=" text-fat text-cherry p-1 shadow-sm">
                         <?php for($j=0;$j<=isset($activeUsers[$j]);$j++){ ?>
                             <?= $activeUsers[$j][0] ?>
                         <?php }  ?>
-                    </h3>
+                    </h6>
                 </div>
 
             </div>
 
             <div class="h6 w-75">
-                <p><?= $chatDescription?></p>
+                <p class="text-cherry h4"><?= $chatDescription?></p>
             </div>
 
-            <div class="d-flex flex-column h-75 w-75 overflow-auto">
-
+            <div class="h-75 w-75 overflow-auto">
 
                 <div class="rounded-0 p-5 shadow-sm overflow-auto" id="messages">
 
@@ -59,12 +58,12 @@ ob_start();
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                     <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
 
-                        <div class="text-end float-end border border-danger rounded-left p-2 w-75 shadow-sm mb-1 mx-2">
+                        <div class="text-end float-end border border-0 bg-light rounded-left p-2 w-75 shadow mb-3 mx-2">
                             <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                         <?php } else { ?>
 
-                        <div class="text-start float-start border border-dark border-1 rounded-right p-2 w-75 shadow-sm mb-1 mx-2">
+                        <div class="text-start float-start border border-0 bg-light rounded-right p-2 w-75 shadow mb-3 mx-2">
                             <h4 class="text-fat p-2 me-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                             <?php } ?>
@@ -102,8 +101,8 @@ $main = ob_get_clean();
 
 require_once('../controller/header_controller.php');
 
-
 require_once('header.php');
+
 require_once('footer.php');
 
 require_once('main.php');
