@@ -18,11 +18,7 @@ require_once('../model/Messages.php');
 require_once('../model/User.php');
 require_once('../controller/channel_controller.php');
 
-ob_start();
-?>
-    <script type="text/javascript" src="../../public/js/hall.js"></script>
-<?php
-$script = ob_get_clean();
+$script = '';
 
 
 
