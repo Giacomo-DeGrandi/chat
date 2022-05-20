@@ -53,7 +53,7 @@ ob_start();
                             <tr>
                                 <td>
                                     <form method="post" class="d-flex flex-column justify-content-center text-cherry text-start shadow-sm">
-                                        <button href="" type="submit" class="border border-0 h6 bg-light rounded-pill text-center" value="<?= $allChannels[$i]['id'] ?>" name="chan">
+                                        <button name="goToChannel" type="submit" class="border border-0 h6 bg-light rounded-pill text-center" value="<?= $allChannels[$i]['id'] ?>" >
                                             ➡️
                                         </button>
                                 </td>

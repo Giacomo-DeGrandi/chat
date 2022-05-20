@@ -145,5 +145,14 @@ if(isset($_POST)){
             header('location: ../view/modify.php');
         break;
 
+        case isset($_POST['goToChannel']):
+            $id= $_POST['goToChannel'];
+
+            //unset other cookies not to make them interfere with views management
+            setcookie("chan", 0, time() - 3600000 * 240);
+            setcookie("chan", $id ,time()+7200);  /* expire in 2 hour */
+            header('location: ../view/chat.php');
+        break;
+
     endswitch;
 }
