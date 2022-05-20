@@ -1,16 +1,16 @@
 
 
-### SIMPLE CHAT APP DEVELOPED FOR MY WEB DEV STUDENT COURSE AT LA PLATEFORME
+# SIMPLE CHAT APP DEVELOPED FOR MY WEB DEV STUDENT COURSE AT LA PLATEFORME
 
 ## Testing
 
 ## use:
 
-# email:
+### email:
 
 bibi@bibi.io
 
-# pw:
+### pw:
 
 Testtest1
 
