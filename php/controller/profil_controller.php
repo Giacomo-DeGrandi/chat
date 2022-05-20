@@ -50,34 +50,39 @@ if(!isset($_SESSION['id'])AND !isset($_POST)) {
     // get channel occurrences
     $chanOccur = [];
 
-    for($i=0;$i<=isset($userMessages[$i]);$i++){
-        foreach ($userMessages[$i] as $k => $v){
-            if($k ==='id_channel'){
-                $chanOccur[] = $v;
+    if(count($userMessages)>1){
+
+        for($i=0;$i<=isset($userMessages[$i]);$i++){
+            foreach ($userMessages[$i] as $k => $v){
+                if($k ==='id_channel'){
+                    $chanOccur[] = $v;
+                }
             }
         }
-    }
-    $occ = array_count_values($chanOccur);
-    $nameArrChanVal = [];
-    // link channel names
-    foreach($occ as $t => $v){
-        $nameArrChanVal[] = $t;
-    }
-    $nameArrChan =  [];
-    foreach($nameArrChanVal as $f => $d){
-        $nameArrChan[] = $channels->getChannelIdByid($d);
-    }
+        $occ = array_count_values($chanOccur);
+        $nameArrChanVal = [];
+        // link channel names
+        foreach($occ as $t => $v){
+            $nameArrChanVal[] = $t;
+        }
+        $nameArrChan =  [];
+        foreach($nameArrChanVal as $f => $d){
+            $nameArrChan[] = $channels->getChannelIdByid($d);
+        }
 
 
-    function flatten(array $array) {
-        $return = array();
-        array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
-        return $return;
+        function flatten(array $array) {
+            $return = array();
+            array_walk_recursive($array, function($a) use (&$return) { $return[] = $a; });
+            return $return;
+        }
+
+        $flatList = flatten($nameArrChan);
+        $nameList = array_unique($flatList);
+        $chanNamesWithNumbOfMess = array_combine($nameList,$occ);
+
     }
 
-    $flatList = flatten($nameArrChan);
-    $nameList = array_unique($flatList);
-    $chanNamesWithNumbOfMess = array_combine($nameList,$occ);
 
 }
 

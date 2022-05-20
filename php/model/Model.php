@@ -8,17 +8,17 @@ abstract class Model {
     function connect(){
 
 
+        $server="localhost";
+        $username="root";
+        $password="";
+        $database="new_discord";
 
-        $server="localhost:3306";
-        $username="disc";
-        $password="testnow";
-        $database="carlo-de-grandi-giacomo_little_discord";
 
         /*
-     $server="localhost";
-     $username="root";
-     $password="";
-     $database="little_discord";
+        $server="localhost:3306";
+        $username="digitree";
+        $password="@LaPlateforme92.@";
+        $database="carlo-de-grandi-giacomo_little_discord";
             */
 
         $dsn = "mysql:host=$server;dbname=$database;charset=UTF8";

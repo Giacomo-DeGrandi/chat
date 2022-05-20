@@ -50,20 +50,20 @@ ob_start();
                 <p class="text-cherry h4"><?= $chatDescription?></p>
             </div>
 
-            <div class="h-75 w-75 overflow-auto">
+            <div class="w-75 h-75 overflow-auto">
 
-                <div class="rounded-0 p-5 shadow-sm overflow-auto" id="messages">
+                <div class="rounded-0 p-5 w-100 shadow-sm overflow-auto" id="messages">
 
                     <?php if(!empty($messagesPrinted)){  ?>
                     <?php for($i=0;$i<=isset($messagesPrinted[$i]); $i++){  ?>
                     <?php if($messagesPrinted[$i]['sent_by']===$_SESSION['id']){ ?>
 
-                        <div class="text-end float-end border border-0 bg-light rounded-left p-2 w-75 shadow mb-3 mx-2">
+                        <div class="text-end float-end border border-0 bg-light w-75 rounded-left p-2 shadow mb-3 mx-2">
                             <h4 class="text-fat p-2 ms-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                         <?php } else { ?>
 
-                        <div class="text-start float-start border border-0 bg-light rounded-right p-2 w-75 shadow mb-3 mx-2">
+                        <div class="text-start float-start border border-0 bg-light w-75 rounded-right p-2 shadow mb-3 mx-2">
                             <h4 class="text-fat p-2 me-4"><?= $messagesPrinted[$i]['name'] ?> </h4>
 
                             <?php } ?>

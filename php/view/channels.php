@@ -36,7 +36,7 @@ ob_start();
 
         <div class="d-flex flex-column align-items-center justify-content-center p-3 bg-white" id="channelList">
             <table class="table w-100">
-                <?php   if(isset($channelList)){ ?>
+                <?php   if(isset($channelList)&&!empty($channelList)){ ?>
                         <tr class="shadow-sm p-2">
                             <th class="p-2">Channels</th>
                             <th class="p-2">Replies</th>
@@ -65,6 +65,11 @@ ob_start();
 
                     <?php   }  ?>
 
+
+                <?php   } else {   ?>
+                    <tr class="shadow-sm p-2">
+                        <th class="p-2">No channels have been created yet</th>
+                    </tr>
 
                 <?php   }  ?>
             </table>

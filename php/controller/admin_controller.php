@@ -33,15 +33,44 @@ $users = new User();
 
 $allChannels = $channels->getAllChannels();
 $allMessages = $messages->getAllMessages();
-$allUsers = $users->getAllUsers();
-$allRights = $users->getAllRights();
-$rights = [];
-for($j=0;$j<=isset($allRights[$j]);$j++){
-    for($m=0;$m<=isset($allRights[$j][$m]);$m++){
-        $rights[] = $allRights[$j][$m];
+if(count($allMessages)>1){
+    $messNameAndChan = [] ;
+    for($p=0;$p<=isset($allMessages[$p]);$p++){
+        foreach($allMessages[$p] as $o => $u){
+            if( $o === 'id'){
+                $messNameAndChan[] = $messages->messagesNamesAndChannels(intval($u));
+            }
+        }
+    }
+    $messNameUser= [];
+    $messNameChannel= [];
+    for($z=0;$z<=isset($messNameAndChan[$z]);$z++){
+        foreach($messNameAndChan[$z] as $o => $u){
+            foreach($u as $ind => $values){
+                if( $ind === 3){
+                    $messNameChannel[] = $values;
+                } elseif( $ind === 6 ){
+                    $messNameUser[] = $values;
+                }
+            }
+        }
     }
 }
-$rights = array_unique($rights);
+
+
+$allUsers = $users->getAllUsers();
+$allRights = $users->getAllRights();
+
+if(count($allRights)>1){
+    $rights = [];
+    for($j=0;$j<=isset($allRights[$j]);$j++){
+        for($m=0;$m<=isset($allRights[$j][$m]);$m++){
+            $rights[] = $allRights[$j][$m];
+        }
+    }
+    $rights = array_unique($rights);
+}
+
 
 if(isset($_POST)){
     switch($_POST):

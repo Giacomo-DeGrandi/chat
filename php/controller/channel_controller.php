@@ -34,12 +34,14 @@ $channelList = $channels->getAllChannels();
 $allReplies = [];
 $lastActivity = [];
 
-for($k=0;$k<=isset($channelList[$k]);$k++){
-    $id = $channelList[$k]['id'];
-    $messagesCount = $messages->countMessagesByChannel($id);
-    $last = $messages->getLastActivity($id);
-    $lastActivity[] = $last[0][0];
-    $allReplies[]  = $messagesCount[0][0];
+if(!empty($channelList)){
+    for($k=0;$k<=isset($channelList[$k]);$k++){
+        $id = $channelList[$k]['id'];
+        $messagesCount = $messages->countMessagesByChannel($id);
+        $last = $messages->getLastActivity($id);
+        $lastActivity[] = $last[0][0];
+        $allReplies[]  = $messagesCount[0][0];
+    }
 }
 
 

@@ -44,7 +44,7 @@ ob_start();
                 </tr>
 
                 <tr>
-                    <?php if(isset($userInfo)){  ?>
+                    <?php if(isset($userInfo)&&!empty($userInfo)){  ?>
 
                     <td><?= $userInfo[0]['id']  ?></td>
                     <td><?= $userInfo[0]['name']  ?></td>
@@ -124,8 +124,6 @@ ob_start();
             <table class="table w-75 p-5">
                 <tr>
                     <th>Total number of messages sent</th>
-                    <th>Channel you've been mostly involved into</th>
-                    <th>You're period of most activity</th>
                 </tr>
 
                 <tr>

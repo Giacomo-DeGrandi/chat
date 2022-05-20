@@ -106,6 +106,53 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
+    public function messagesNamesAndChannels($id_message){
+        $sql= 'SELECT messages.id, messages.sent_by, messages.id_channel,
+                channels.name, channels.id,
+                users.id, users.name
+                FROM messages
+                INNER JOIN channels ON messages.id_channel = channels.id
+                INNER JOIN users ON messages.sent_by = users.id
+                WHERE messages.id = :id ';
+        $p = [':id'  =>  $id_message ];
+        $check = $this->selectQuery($sql,$p);
+        return $check->fetchAll();
+    }
 
 }
+
+
+
+/*
+
+
+SELECT messages.id, messages.sent_by, messages.id_channel,
+channels.name, channels.id,
+users.id, users.name
+FROM messages
+INNER JOIN channels ON messages.id_channel = channels.id
+INNER JOIN users ON messages.sent_by = users.id
+WHERE messages.id = 1
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded',function(){
                 .then(d =>{
 
                     let div = document.createElement('div')
-                    div.setAttribute('class','text-end float-end border border-0 bg-light rounded-left p-2 w-75 shadow mb-4 mx-2')
+                    div.setAttribute('class','text-end float-end border border-0 bg-light w-75 rounded-left p-2 shadow mb-4 mx-2')
                     let h3Name = document.createElement('h4')
                     h3Name.setAttribute('class','text-fat p-2 me-4')
                     h3Name.innerText = d[0]
@@ -193,12 +193,12 @@ document.addEventListener('DOMContentLoaded',function(){
 
                     if(vu[1]===id){
 
-                        div.setAttribute('class','text-end float-end border border-0 bg-light rounded-left p-2 w-75 shadow mb-4 mx-2')
+                        div.setAttribute('class','text-end float-end border border-0 bg-light w-75 rounded-left p-2 shadow mb-4 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 ms-4')
 
                     } else {
 
-                        div.setAttribute('class', 'text-start float-start border border-0 bg-light rounded-right p-2 w-75 shadow mb-4 mx-2')
+                        div.setAttribute('class', 'text-start float-start border border-0 bg-light w-75 rounded-right p-2 shadow mb-4 mx-2')
                         h4Name.setAttribute('class','text-fat p-2 me-4')
                     }
 

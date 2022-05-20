@@ -38,7 +38,7 @@ ob_start();
             <h5 class="text-fat text-black">Channels</h5>
             <div class="vh-50 overflow-auto p-2 shadow-sm rounded-2 mb-2">
                 <table class="table w-100 overflow-scroll">
-                    <?php   if(isset($allChannels)){ ?>
+                    <?php   if(isset($allChannels)&&!empty($allChannels)){ ?>
 
                         <tr>
                             <th>Id</th>
@@ -135,7 +135,19 @@ ob_start();
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $allUsers[$i]['rights'] ?><b>
+                                    <?php if($allUsers[$i]['rights']==='42'){ ?>
+                                        <b class="h6 text-black">Administrator</b>
+                                    <?php } elseif($allUsers[$i]['rights']==='1'){ ?>
+                                        <b class="h6 text-black">User</b>
+                                    <?php } ?>
+                                </td>
+
+                                <td>
+                                    <?php if($allUsers[$i]['connected']==='1'){ ?>
+                                        <b class="h6 text-black">🟢</b>
+                                    <?php } elseif($allUsers[$i]['connected']==='0'){ ?>
+                                        <b class="h6 text-black">🔴</b>
+                                    <?php } ?>
                                 </td>
 
                                 <td>
@@ -177,7 +189,8 @@ ob_start();
             <div class="vh-50 overflow-auto p-2 shadow-sm rounded-2">
                 <table class="table w-100 overflow-scroll">
 
-                    <?php   if(isset($allMessages)){ ?>
+                    <?php   if(isset($allMessages)&&isset($messNameChannel)&&isset($messNameUser)&&
+                            !empty($allMessages)&&!empty($messNameChannel)&&!empty($messNameUser)){ ?>
 
                         <tr>
                             <th>Id</th>
@@ -197,7 +210,7 @@ ob_start();
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $allMessages[$i]['sent_by'] ?></b>
+                                    <b class="h6 text-black"><?= $messNameUser[$i] ?></b>
                                 </td>
 
                                 <td>
@@ -209,7 +222,7 @@ ob_start();
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $allMessages[$i]['id_channel'] ?></b>
+                                    <b class="h6 text-black"><?= $messNameChannel[$i] ?></b>
                                 </td>
 
                                 <td>
