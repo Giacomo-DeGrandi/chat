@@ -151,10 +151,6 @@ ob_start();
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $allUsers[$i]['connected'] ?></b>
-                                </td>
-
-                                <td>
                                     <form method="post">
                                         <button type="submit" class="btn-sm btn btn-outline-danger" value="<?= $allUsers[$i]['id'] ?>" name="usersDelete">
                                             delete
