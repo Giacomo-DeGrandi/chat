@@ -1,6 +1,6 @@
 
 
-<h1>Little Discord Project</h1>
+Little Discord Project
 
 Simple chat based on JS and PHP;
 
