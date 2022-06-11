@@ -185,8 +185,7 @@ ob_start();
             <div class="vh-50 overflow-auto p-2 shadow-sm rounded-2">
                 <table class="table w-100 overflow-scroll">
 
-                    <?php   if(isset($allMessages)&&isset($messNameChannel)&&isset($messNameUser)&&
-                            !empty($allMessages)&&!empty($messNameChannel)&&!empty($messNameUser)){ ?>
+                    <?php   if(isset($allMessages)&&!empty($allMessages)){ ?>
 
                         <tr>
                             <th>Id</th>
@@ -202,11 +201,11 @@ ob_start();
                             <tr>
 
                                 <td>
-                                    <b>🆔<?= $allMessages[$i]['id'] ?></b>
+                                    <b>🆔<?= $allMessages[$i][0] ?></b>
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $messNameUser[$i] ?></b>
+                                    <b class="h6 text-black"><?= $allMessages[$i]['name'] ?></b>
                                 </td>
 
                                 <td>
@@ -218,12 +217,12 @@ ob_start();
                                 </td>
 
                                 <td>
-                                    <b class="h6 text-black"><?= $messNameChannel[$i] ?></b>
+                                    <b class="h6 text-black"><?= $allMessages[$i][5] ?></b>
                                 </td>
 
                                 <td>
                                     <form method="post">
-                                        <button type="submit" class="btn-sm btn btn-outline-danger" value="<?= $allMessages[$i]['id'] ?>" name="messagesDelete">
+                                        <button type="submit" class="btn-sm btn btn-outline-danger" value="<?= $allMessages[$i][0] ?>" name="messagesDelete">
                                             delete
                                         </button>
                                     </form>
@@ -231,7 +230,7 @@ ob_start();
 
                                 <td>
                                     <form method="post">
-                                        <button type="submit" class="btn-sm btn btn-outline-dark" value="<?= $allMessages[$i]['id'] ?>" name="messagesModify">
+                                        <button type="submit" class="btn-sm btn btn-outline-dark" value="<?= $allMessages[$i][0] ?>" name="messagesModify">
                                             modify
                                         </button>
                                     </form>

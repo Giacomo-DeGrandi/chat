@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
             let plaintext = messCon.value
             let sentBy = sendBtn.value.split(',')
+			console.log(sentBy[0]);
 
             let textData = new FormData();
 

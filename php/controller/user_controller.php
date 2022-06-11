@@ -86,12 +86,12 @@ if($_POST){
 
             // check if user is at least 18
             $nowDate = getdate();
-            $nowDate = strtotime($nowDate[0]);
+            $nowDate = $nowDate['year'].'-'.$nowDate['mon'].'-'.$nowDate['mday'].' '.$nowDate['hours'].':'.$nowDate['minutes'].':'.$nowDate['seconds'];
             $nowDate = new DateTime($nowDate);
 
             $testDate = new DateTime($dob);
 
-
+			
             $difference = $nowDate->diff($testDate);
 
             if($difference-> y < 18){    array_push($errors, "You have to be at least 18yo to subscribe");   }

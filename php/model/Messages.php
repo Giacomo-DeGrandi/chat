@@ -17,7 +17,7 @@ class Messages extends Model{
 
     public function getAllMessages(){
 
-        $sql = 'SELECT * FROM messages';
+        $sql = 'SELECT * FROM messages ORDER BY id ASC';
         $check = $this->selectQuery($sql);
         return $check->fetchAll();
     }
@@ -106,16 +106,15 @@ class Messages extends Model{
         return $check->fetchAll();
     }
 
-    public function messagesNamesAndChannels($id_message){
-        $sql= 'SELECT messages.id, messages.sent_by, messages.id_channel,
+    public function getAllMessagesWithNamesAndChannels(){
+        $sql= 'SELECT messages.id, messages.sent_by, messages.id_channel, messages.content, messages.date,
                 channels.name, channels.id,
                 users.id, users.name
                 FROM messages
                 INNER JOIN channels ON messages.id_channel = channels.id
                 INNER JOIN users ON messages.sent_by = users.id
-                WHERE messages.id = :id ';
-        $p = [':id'  =>  $id_message ];
-        $check = $this->selectQuery($sql,$p);
+				ORDER BY date DESC';
+        $check = $this->selectQuery($sql);
         return $check->fetchAll();
     }
 
